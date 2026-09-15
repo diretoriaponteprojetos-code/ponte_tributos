@@ -39,6 +39,7 @@ Detalhes em [`docs/arquitetura/01-camadas.md`](docs/arquitetura/01-camadas.md).
 | `schemas/` | JSON Schema (draft 2020-12) de cada objeto canônico |
 | `examples/` | Instâncias YAML de referência, validadas em CI contra os schemas |
 | `tools/validate.py` | Validador de schemas e de integridade referencial |
+| `tools/ingest_source.py` | Recupera o arquivo de uma `Source`, grava o `sha256` e imprime trechos para conferência de evidências |
 | `tests/` | Testes que executam o validador |
 
 ## Modelo canônico mínimo

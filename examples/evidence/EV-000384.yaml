@@ -1,0 +1,28 @@
+evidence_id: EV-000384
+source: SRC-RFB-LC214
+kind: TEXT
+locator:
+  article: "348"
+  paragraph: "1"
+text: >-
+  Art. 348 (síntese a substituir pela transcrição literal): em relação aos fatos
+  geradores de 1º de janeiro a 31 de dezembro de 2026, o valor recolhido de IBS e
+  CBS será compensado com o valor devido, no mesmo período de apuração, das
+  contribuições do art. 195, I, "b", e IV, e da contribuição para o PIS do
+  art. 239 da Constituição; § 1º: fica dispensado do recolhimento o contribuinte
+  que cumprir as obrigações acessórias previstas na legislação; § 2º: o
+  contribuinte dispensado permanece obrigado ao pagamento integral dessas
+  contribuições.
+observed_at: 2026-09-15
+verification_status: PENDING
+client_specific: false
+provenance:
+  created_at: "2026-09-15T19:00:00-03:00"
+  created_by: fundacao-repositorio
+  method: MANUAL
+  notes: >-
+    Síntese a partir de fontes secundárias convergentes (Jurídico Certo, ConJur,
+    Sindifisco, sumários de busca). Não é transcrição literal: substituir pelo
+    texto do Planalto ao ingerir a fonte. Base da exceção "dispensa de
+    recolhimento condicionada a obrigações acessórias" nas regras
+    TAX-CBS-2026-001 e TAX-IBS-2026-001, ainda a modelar como regra própria.

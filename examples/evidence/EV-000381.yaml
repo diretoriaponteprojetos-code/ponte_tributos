@@ -2,10 +2,11 @@ evidence_id: EV-000381
 source: SRC-RFB-LC214
 kind: TEXT
 locator:
-  article: "343"
+  article: "346"
 text: >-
-  Durante o ano de 2026, o IBS será cobrado à alíquota estadual de 0,1% (um décimo
-  por cento) e a CBS à alíquota de 0,9% (nove décimos por cento).
+  Em relação aos fatos geradores ocorridos de 1º de janeiro a 31 de dezembro de
+  2026, a CBS será cobrada mediante aplicação da alíquota de 0,9% (nove décimos
+  por cento).
 observed_at: 2026-09-15
 verification_status: PENDING
 client_specific: false
@@ -14,7 +15,13 @@ provenance:
   created_by: fundacao-repositorio
   method: MANUAL
   notes: >-
-    Texto e locator transcritos de memória na sessão de fundação. O documento
-    fundador citava art. 346; o art. 343 é a melhor referência conhecida.
-    Ambos devem ser conferidos contra o arquivo recuperado antes de
-    verification_status virar VERIFIED_AGAINST_SOURCE.
+    Histórico: a primeira versão desta evidência atribuía CBS 0,9% e IBS 0,1% a
+    um único artigo (343), transcrito de memória. Em 2026-09-15 a conferência
+    por fontes secundárias convergentes (Sindifisco, ConJur, TaxUp, Pasqualino,
+    Jurídico Certo, sumários de busca) indicou que o art. 346 trata da CBS e o
+    art. 343 do IBS, confirmando o locator do documento fundador. O texto acima
+    é a redação reconstruída dessas fontes. Permanece PENDING porque o texto
+    oficial do Planalto não pôde ser recuperado deste ambiente (bloqueio de
+    rede). Conferir com `python tools/ingest_source.py SRC-RFB-LC214 --grep
+    "Art. 346"` em ambiente com acesso e só então promover a
+    VERIFIED_AGAINST_SOURCE.

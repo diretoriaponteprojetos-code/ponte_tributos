@@ -2,7 +2,7 @@ rule_id: TAX-CBS-2026-001
 title: CBS — alíquota de teste em 2026
 subject:
   tax: CBS
-  incidence_hypothesis: operações com bens e serviços no ano-calendário de 2026
+  incidence_hypothesis: fatos geradores ocorridos de 1º de janeiro a 31 de dezembro de 2026
 scope:
   jurisdiction:
     level: FEDERAL
@@ -19,11 +19,13 @@ effect:
     unit: percent
 exceptions:
   - description: >-
-      Dispensa de recolhimento condicionada ao cumprimento de obrigações
-      acessórias, conforme orientações da RFB para 2026 (a modelar como regra própria).
+      Dispensa de recolhimento para o contribuinte que cumprir as obrigações
+      acessórias (LC 214/2025, art. 348, § 1º; ver EV-000384), com
+      compensação do valor recolhido contra PIS/Cofins (art. 348, caput).
+      A modelar como regra própria.
 authority:
   source: SRC-RFB-LC214
-  article: "343"
+  article: "346"
 validity:
   publication_date: 2025-01-16
   valid_from: 2026-01-01
@@ -39,6 +41,7 @@ provenance:
   created_by: fundacao-repositorio
   method: MANUAL
   notes: >-
-    Exemplo de referência. Como as evidências estão PENDING, em operação real
-    esta regra ficaria em DRAFT até a conferência; aqui está ACTIVE apenas para
-    demonstrar a exigência de Review.
+    Exemplo de referência. Locator corrigido em 2026-09-15 de art. 343 para
+    art. 346 (ver histórico em EV-000381). Como as evidências estão PENDING, em
+    operação real esta regra ficaria em DRAFT até a conferência; aqui está
+    ACTIVE apenas para demonstrar a exigência de Review.
