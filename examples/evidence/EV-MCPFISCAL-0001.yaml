@@ -1,0 +1,18 @@
+evidence_id: EV-MCPFISCAL-0001
+source: SRC-GITHUB-MCPFISCAL
+kind: TEXT
+locator:
+  file: compare_tax_regimes (caminho exato a confirmar no commit df136768)
+text: >-
+  O comparador de regimes utiliza cálculo simplificado, premissas públicas e
+  tabelas vigentes em 2025, e não substitui parecer profissional. Premissas:
+  Lucro Real com margem presumida de 15%; PIS/Cofins 9,25% sobre faturamento;
+  ISS 5%; ICMS 12%; Lucro Presumido com estimativas médias de ICMS/ISS.
+observed_at: 2026-09-15
+verification_status: PENDING
+client_specific: false
+provenance:
+  created_at: "2026-09-15T12:00:00-03:00"
+  created_by: fundacao-repositorio
+  method: MANUAL
+  notes: Base da regra de uso do MCP Fiscal como simulador preliminar (DEC-001).

@@ -1,0 +1,44 @@
+claim_id: CLM-0034-BENCHMARK-01
+statement: >-
+  A variação de alíquota efetiva entre regimes documentada pelo Ipea é
+  compatível com a diferença observada entre a carga estrutural esperada
+  (18,70%) e a carga observada (19,41%) do cliente, mas não a explica.
+nature: BENCHMARK
+taxpayer: TP-0034
+period:
+  from: 2025-09-01
+  to: 2026-08-31
+supported_by:
+  - EV-IPEA-0001
+  - EV-CLIENT-0034
+benchmarks:
+  - RF-029
+normative_snapshot: CANON-2026-09-15
+verification:
+  status: PARTIALLY_SUPPORTED
+  checks:
+    source_exists: PASS
+    authority_sufficient: PASS
+    in_force: NOT_APPLICABLE
+    scope: PASS
+    entity: NOT_APPLICABLE
+    product_or_cnae: NOT_APPLICABLE
+    jurisdiction: PASS
+    period: PASS
+    exceptions: NOT_APPLICABLE
+    contradictory_evidence: PASS
+    reproducible: NOT_APPLICABLE
+    free_of_hypothesis: PASS
+  checked_at: "2026-09-15T16:20:00-03:00"
+  checked_by: ponte-confrontation-engine
+  notes: >-
+    Benchmark populacional (client_specific: false). Não afirma nada sobre a
+    empresa individualmente; evidência de pesquisa ainda PENDING.
+provenance:
+  created_at: "2026-09-15T16:20:00-03:00"
+  created_by: ponte-confrontation-engine
+  method: COMPUTATION
+  tool: ponte-confrontation-engine
+  tool_version: 0.1.0
+  inputs:
+    - RF-029

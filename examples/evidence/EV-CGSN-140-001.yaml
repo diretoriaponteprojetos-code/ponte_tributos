@@ -1,0 +1,16 @@
+evidence_id: EV-CGSN-140-001
+source: SRC-CGSN-RES-140
+kind: TEXT
+locator:
+  section: Cálculo e recolhimento dos tributos devidos (locator exato a confirmar)
+text: >-
+  Dispositivos da Resolução CGSN 140/2018 sobre apuração mensal do Simples
+  Nacional anteriores à adequação ao IBS/CBS.
+observed_at: 2026-09-15
+verification_status: PENDING
+client_specific: false
+provenance:
+  created_at: "2026-09-15T12:00:00-03:00"
+  created_by: fundacao-repositorio
+  method: MANUAL
+  notes: Fixture para demonstrar a cadeia supersedes RULE-100 → RULE-101.

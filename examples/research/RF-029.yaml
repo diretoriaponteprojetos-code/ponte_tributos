@@ -1,0 +1,22 @@
+id: RF-029
+claim: A alíquota efetiva empresarial varia substancialmente entre regimes tributários.
+population: empresas brasileiras
+period:
+  from: 2015-01-01
+  to: 2023-12-31
+method: Documento Ipea que cita estudo da Receita Federal (método e período exatos a confirmar no arquivo).
+source: SRC-IPEA-CGCOM-ALIQUOTA-EFETIVA
+evidence:
+  - EV-IPEA-0001
+applicability:
+  client_specific: false
+  regimes:
+    - SIMPLES_NACIONAL
+    - LUCRO_PRESUMIDO
+    - LUCRO_REAL
+  notes: Um estudo sobre a população de empresas não prova nada sobre a Empresa X.
+use: benchmark
+provenance:
+  created_at: "2026-09-15T12:30:00-03:00"
+  created_by: fundacao-repositorio
+  method: MANUAL

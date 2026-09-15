@@ -1,0 +1,113 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://ponte-projetos.dev/schemas/decision.schema.json",
+  "title": "Decision (L6)",
+  "description": "Decisão aconselhável auditável. Decision DERIVES_FROM Claims. Implementa a regra inegociável de saída (docs/arquitetura/03-modelo-canonico.md).",
+  "type": "object",
+  "additionalProperties": false,
+  "properties": {
+    "decision_id": { "$ref": "common.schema.json#/$defs/decision_id" },
+    "taxpayer": { "$ref": "common.schema.json#/$defs/taxpayer_id" },
+    "question": { "type": "string", "minLength": 1, "description": "A pergunta do empresário, em linguagem natural" },
+    "product": {
+      "type": "string",
+      "enum": ["RADAR_FISCAL", "DIAGNOSTICO_TRIBUTARIO", "SIMULADOR_ESTRATEGICO", "AUDITORIA_DE_OPORTUNIDADES", "CONSELHEIRO_FISCAL_EXECUTIVO"]
+    },
+    "nature": { "type": "string", "enum": ["DIAGNOSIS", "SCENARIO", "OPPORTUNITY", "ALERT", "RECOMMENDATION"] },
+    "headline": {
+      "type": "object",
+      "additionalProperties": false,
+      "description": "O número principal, nunca entregue sozinho",
+      "properties": {
+        "label": { "type": "string", "minLength": 1 },
+        "value": {
+          "oneOf": [
+            { "$ref": "common.schema.json#/$defs/money" },
+            { "$ref": "common.schema.json#/$defs/percent" }
+          ]
+        }
+      },
+      "required": ["label", "value"]
+    },
+    "applicable_period": { "$ref": "common.schema.json#/$defs/period" },
+    "derives_from": {
+      "type": "array",
+      "minItems": 1,
+      "items": { "$ref": "common.schema.json#/$defs/claim_id" }
+    },
+    "premises_total": { "type": "integer", "minimum": 0 },
+    "premises_verified": { "type": "integer", "minimum": 0 },
+    "premises_unverified": { "type": "integer", "minimum": 0 },
+    "scenarios": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "label": { "type": "string", "minLength": 1 },
+          "value": { "$ref": "common.schema.json#/$defs/money" },
+          "claim": { "$ref": "common.schema.json#/$defs/claim_id" }
+        },
+        "required": ["label", "value", "claim"]
+      }
+    },
+    "sensitivity": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "driver": { "type": "string", "minLength": 1 },
+          "share_of_outcome": { "$ref": "common.schema.json#/$defs/percent" },
+          "premise": { "type": "string", "pattern": "^P\\d+$" }
+        },
+        "required": ["driver", "share_of_outcome"]
+      }
+    },
+    "actions": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "action": { "type": "string", "minLength": 1 },
+          "impact": { "$ref": "common.schema.json#/$defs/money" },
+          "evidence_strength": { "type": "string", "enum": ["ALTA", "MEDIA", "BAIXA", "CENARIO"] },
+          "risk": { "type": "string", "enum": ["BAIXO", "MEDIO", "ALTO", "NAO_AVALIADO"] },
+          "claim": { "$ref": "common.schema.json#/$defs/claim_id" }
+        },
+        "required": ["action", "evidence_strength", "risk", "claim"]
+      }
+    },
+    "missing_evidence": {
+      "type": "array",
+      "items": { "type": "string", "minLength": 1 }
+    },
+    "normative_snapshot": { "$ref": "common.schema.json#/$defs/normative_snapshot" },
+    "source_set": {
+      "type": "array",
+      "minItems": 1,
+      "items": { "$ref": "common.schema.json#/$defs/source_id" }
+    },
+    "calculation_version": { "type": "string", "minLength": 1, "description": "Ex.: TAXENGINE-0.8.3" },
+    "review": { "$ref": "common.schema.json#/$defs/review_id" },
+    "status": { "type": "string", "enum": ["DRAFT", "REVIEWED", "DELIVERED", "WITHDRAWN"] },
+    "provenance": { "$ref": "common.schema.json#/$defs/provenance" }
+  },
+  "required": [
+    "decision_id", "taxpayer", "question", "product", "nature", "headline",
+    "applicable_period", "derives_from", "premises_total", "premises_verified",
+    "premises_unverified", "missing_evidence", "normative_snapshot", "source_set",
+    "calculation_version", "status", "provenance"
+  ],
+  "allOf": [
+    {
+      "if": { "properties": { "status": { "enum": ["REVIEWED", "DELIVERED"] } } },
+      "then": { "required": ["review"] }
+    },
+    {
+      "if": { "properties": { "nature": { "const": "SCENARIO" } } },
+      "then": { "required": ["scenarios", "sensitivity"], "properties": { "scenarios": { "minItems": 2 } } }
+    }
+  ]
+}

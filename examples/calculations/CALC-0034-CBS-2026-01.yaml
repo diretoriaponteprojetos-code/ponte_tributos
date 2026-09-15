@@ -1,0 +1,34 @@
+calculation_id: CALC-0034-CBS-2026-01
+purpose: CBS de teste sobre a operação TX-0034-000001 (janeiro/2026)
+engine:
+  name: PONTE TaxEngine
+  version: 0.8.3
+  role: CANONICAL
+taxpayer: TP-0034
+period:
+  from: 2026-01-01
+  to: 2026-01-31
+normative_snapshot: CANON-2026-09-15
+governed_by:
+  - TAX-CBS-2026-001
+inputs:
+  - TX-0034-000001
+parameters:
+  cbs_rate_percent: 0.9
+  base:
+    amount: 120000
+    currency: BRL
+outputs:
+  cbs_amount:
+    amount: 1080
+    currency: BRL
+reproducible: true
+provenance:
+  created_at: "2026-09-15T15:00:00-03:00"
+  created_by: ponte-taxengine
+  method: COMPUTATION
+  tool: ponte-taxengine
+  tool_version: 0.8.3
+  inputs:
+    - TX-0034-000001
+    - TAX-CBS-2026-001

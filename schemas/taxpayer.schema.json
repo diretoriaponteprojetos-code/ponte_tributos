@@ -1,0 +1,101 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://ponte-projetos.dev/schemas/taxpayer.schema.json",
+  "title": "Taxpayer (L3)",
+  "description": "Gêmeo digital tributário de um cliente. Ver docs/arquitetura/01-camadas.md (L3).",
+  "type": "object",
+  "additionalProperties": false,
+  "properties": {
+    "taxpayer_id": { "$ref": "common.schema.json#/$defs/taxpayer_id" },
+    "entity": { "$ref": "common.schema.json#/$defs/entity_id" },
+    "regime": { "$ref": "common.schema.json#/$defs/regime" },
+    "regime_since": { "$ref": "common.schema.json#/$defs/date" },
+    "establishments": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "cnpj": { "$ref": "common.schema.json#/$defs/cnpj" },
+          "uf": { "$ref": "common.schema.json#/$defs/uf" },
+          "municipality_ibge": { "type": "string", "pattern": "^\\d{7}$" },
+          "kind": { "type": "string", "enum": ["MATRIZ", "FILIAL"] }
+        },
+        "required": ["cnpj", "uf", "kind"]
+      }
+    },
+    "economic_activity": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "primary_cnae": { "$ref": "common.schema.json#/$defs/cnae" },
+        "secondary_cnae": { "type": "array", "items": { "$ref": "common.schema.json#/$defs/cnae" } }
+      },
+      "required": ["primary_cnae"]
+    },
+    "products": { "type": "array", "items": { "$ref": "common.schema.json#/$defs/ncm" } },
+    "services": { "type": "array", "items": { "$ref": "common.schema.json#/$defs/nbs" } },
+    "profile_period": { "$ref": "common.schema.json#/$defs/period" },
+    "revenue": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "trailing_12_months": { "$ref": "common.schema.json#/$defs/money" },
+        "by_state": {
+          "type": "object",
+          "propertyNames": { "$ref": "common.schema.json#/$defs/uf" },
+          "additionalProperties": { "$ref": "common.schema.json#/$defs/money" }
+        },
+        "b2b_share": { "$ref": "common.schema.json#/$defs/percent" },
+        "b2c_share": { "$ref": "common.schema.json#/$defs/percent" }
+      }
+    },
+    "payroll": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "trailing_12_months": { "$ref": "common.schema.json#/$defs/money" },
+        "headcount": { "type": "integer", "minimum": 0 }
+      }
+    },
+    "purchases": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "credit_eligible": { "$ref": "common.schema.json#/$defs/money" },
+        "non_credit_eligible": { "$ref": "common.schema.json#/$defs/money" }
+      }
+    },
+    "taxes": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "paid": { "$ref": "common.schema.json#/$defs/money" },
+        "assessed": { "$ref": "common.schema.json#/$defs/money" },
+        "withheld": { "$ref": "common.schema.json#/$defs/money" }
+      }
+    },
+    "benefits": { "type": "array", "items": { "type": "string", "minLength": 1 } },
+    "obligations": { "type": "array", "items": { "type": "string", "minLength": 1 } },
+    "fiscal_documents": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "nfe": { "type": "boolean" },
+        "nfse": { "type": "boolean" },
+        "sped_efd_icms_ipi": { "type": "boolean" },
+        "sped_efd_contribuicoes": { "type": "boolean" },
+        "sped_ecd": { "type": "boolean" },
+        "sped_ecf": { "type": "boolean" }
+      }
+    },
+    "evidence": {
+      "type": "array",
+      "minItems": 1,
+      "items": { "$ref": "common.schema.json#/$defs/evidence_id" }
+    },
+    "provenance": { "$ref": "common.schema.json#/$defs/provenance" }
+  },
+  "required": ["taxpayer_id", "entity", "regime", "establishments", "economic_activity", "profile_period", "evidence", "provenance"]
+}

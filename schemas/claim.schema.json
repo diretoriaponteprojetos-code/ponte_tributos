@@ -1,0 +1,120 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://ponte-projetos.dev/schemas/claim.schema.json",
+  "title": "Claim (L5)",
+  "description": "Afirmação candidata submetida ao motor de confrontação. Evidence SUPPORTS Claim. Ver docs/arquitetura/05-motor-de-confrontacao.md",
+  "type": "object",
+  "additionalProperties": false,
+  "properties": {
+    "claim_id": { "$ref": "common.schema.json#/$defs/claim_id" },
+    "statement": { "type": "string", "minLength": 1 },
+    "nature": {
+      "type": "string",
+      "enum": ["FACT", "RULE_APPLICATION", "COMPUTATION", "SCENARIO", "BENCHMARK"]
+    },
+    "taxpayer": { "$ref": "common.schema.json#/$defs/taxpayer_id" },
+    "period": { "$ref": "common.schema.json#/$defs/period" },
+    "jurisdiction": { "$ref": "common.schema.json#/$defs/jurisdiction" },
+    "value": {
+      "oneOf": [
+        { "$ref": "common.schema.json#/$defs/money" },
+        { "$ref": "common.schema.json#/$defs/percent" },
+        { "type": "number" },
+        { "type": "boolean" }
+      ]
+    },
+    "supported_by": {
+      "type": "array",
+      "items": { "$ref": "common.schema.json#/$defs/evidence_id" }
+    },
+    "governed_by": {
+      "type": "array",
+      "items": { "$ref": "common.schema.json#/$defs/rule_id" }
+    },
+    "derived_from": {
+      "type": "array",
+      "items": { "$ref": "common.schema.json#/$defs/calculation_id" }
+    },
+    "benchmarks": {
+      "type": "array",
+      "items": { "$ref": "common.schema.json#/$defs/research_finding_id" }
+    },
+    "premises": {
+      "type": "array",
+      "items": { "$ref": "common.schema.json#/$defs/premise" }
+    },
+    "normative_snapshot": { "$ref": "common.schema.json#/$defs/normative_snapshot" },
+    "verification": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "status": {
+          "type": "string",
+          "enum": [
+            "VERIFIED",
+            "CONTRADICTED",
+            "PARTIALLY_SUPPORTED",
+            "INCOMPARABLE",
+            "STALE",
+            "INSUFFICIENT_EVIDENCE",
+            "SCENARIO_ONLY"
+          ]
+        },
+        "checks": {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "source_exists": { "$ref": "#/$defs/check" },
+            "authority_sufficient": { "$ref": "#/$defs/check" },
+            "in_force": { "$ref": "#/$defs/check" },
+            "scope": { "$ref": "#/$defs/check" },
+            "entity": { "$ref": "#/$defs/check" },
+            "product_or_cnae": { "$ref": "#/$defs/check" },
+            "jurisdiction": { "$ref": "#/$defs/check" },
+            "period": { "$ref": "#/$defs/check" },
+            "exceptions": { "$ref": "#/$defs/check" },
+            "contradictory_evidence": { "$ref": "#/$defs/check" },
+            "reproducible": { "$ref": "#/$defs/check" },
+            "free_of_hypothesis": { "$ref": "#/$defs/check" }
+          },
+          "required": [
+            "source_exists", "authority_sufficient", "in_force", "scope", "entity",
+            "product_or_cnae", "jurisdiction", "period", "exceptions",
+            "contradictory_evidence", "reproducible", "free_of_hypothesis"
+          ]
+        },
+        "checked_at": { "$ref": "common.schema.json#/$defs/datetime" },
+        "checked_by": { "type": "string", "minLength": 1 },
+        "notes": { "type": "string" }
+      },
+      "required": ["status", "checks", "checked_at", "checked_by"]
+    },
+    "provenance": { "$ref": "common.schema.json#/$defs/provenance" }
+  },
+  "required": ["claim_id", "statement", "nature", "period", "supported_by", "normative_snapshot", "verification", "provenance"],
+  "allOf": [
+    {
+      "if": { "properties": { "nature": { "enum": ["SCENARIO", "COMPUTATION"] } } },
+      "then": { "required": ["premises", "derived_from"] }
+    },
+    {
+      "if": { "properties": { "nature": { "const": "RULE_APPLICATION" } } },
+      "then": { "required": ["governed_by"], "properties": { "governed_by": { "minItems": 1 } } }
+    },
+    {
+      "if": { "properties": { "nature": { "const": "BENCHMARK" } } },
+      "then": { "required": ["benchmarks"], "properties": { "benchmarks": { "minItems": 1 } } }
+    },
+    {
+      "if": { "properties": { "verification": { "properties": { "status": { "const": "VERIFIED" } } } } },
+      "then": { "properties": { "supported_by": { "minItems": 1 } } }
+    }
+  ],
+  "$defs": {
+    "check": {
+      "type": "string",
+      "enum": ["PASS", "FAIL", "NOT_APPLICABLE", "UNKNOWN"],
+      "description": "PASS sempre significa resultado favorável ao claim (ex.: free_of_hypothesis PASS = não depende de hipótese)"
+    }
+  }
+}

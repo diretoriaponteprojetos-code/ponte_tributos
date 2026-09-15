@@ -1,0 +1,12 @@
+id: SRC-RFB-ARRECADACAO-CNAE
+type: official_dataset
+authority_level: OFFICIAL_DATA
+authority: AUT-RFB
+publisher: Receita Federal do Brasil
+title: Dados abertos — arrecadação por CNAE
+url: https://www.gov.br/receitafederal/pt-br/acesso-a-informacao/dados-abertos
+dataset: arrecadacao_cnae
+retrieved_at: 2026-09-15
+retrieval_status: RETRIEVED
+sha256: "0000000000000000000000000000000000000000000000000000000000000000"
+notes: Placeholder de hash. Registrar o arquivo/versão do dataset efetivamente baixado.

@@ -1,0 +1,17 @@
+evidence_id: EV-CGSN-2026-08-001
+source: SRC-RFB-NOTICIA-CGSN-2026-08
+kind: TEXT
+locator:
+  section: Notícia — agosto de 2026
+text: >-
+  O Comitê Gestor do Simples Nacional atualizou as regras do regime para
+  adequação à Reforma Tributária do Consumo (IBS/CBS).
+observed_at: 2026-09-15
+verification_status: PENDING
+client_specific: false
+provenance:
+  created_at: "2026-09-15T12:00:00-03:00"
+  created_by: watcher-normativo
+  method: WATCHER
+  tool: ponte-watcher
+  tool_version: 0.1.0

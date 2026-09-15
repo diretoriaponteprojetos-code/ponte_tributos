@@ -1,0 +1,77 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://ponte-projetos.dev/schemas/candidate_update.schema.json",
+  "title": "CandidateUpdate",
+  "description": "Mudança normativa detectada pelo watcher, com análise de impacto no portfólio. Ver docs/arquitetura/06-watcher-normativo.md",
+  "type": "object",
+  "additionalProperties": false,
+  "properties": {
+    "id": { "$ref": "common.schema.json#/$defs/candidate_update_id" },
+    "detected_at": { "$ref": "common.schema.json#/$defs/datetime" },
+    "source": { "$ref": "common.schema.json#/$defs/source_id" },
+    "evidence": {
+      "type": "array",
+      "minItems": 1,
+      "items": { "$ref": "common.schema.json#/$defs/evidence_id" }
+    },
+    "change_summary": { "type": "string", "minLength": 1 },
+    "affected_rules": {
+      "type": "array",
+      "items": { "$ref": "common.schema.json#/$defs/rule_id" }
+    },
+    "proposed_rules": {
+      "type": "array",
+      "items": { "$ref": "common.schema.json#/$defs/rule_id" },
+      "description": "Regras CANDIDATE criadas a partir desta mudança"
+    },
+    "impact_analysis": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "criteria": {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "taxes": { "type": "array", "items": { "$ref": "common.schema.json#/$defs/tax" } },
+            "regimes": { "type": "array", "items": { "$ref": "common.schema.json#/$defs/regime" } },
+            "cnae": { "type": "array", "items": { "$ref": "common.schema.json#/$defs/cnae" } },
+            "ncm": { "type": "array", "items": { "$ref": "common.schema.json#/$defs/ncm" } },
+            "uf": { "type": "array", "items": { "$ref": "common.schema.json#/$defs/uf" } },
+            "effective_from": { "$ref": "common.schema.json#/$defs/date" }
+          }
+        },
+        "taxpayers": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+              "taxpayer": { "$ref": "common.schema.json#/$defs/taxpayer_id" },
+              "status": { "type": "string", "enum": ["AFFECTED", "NOT_AFFECTED", "POSSIBLE_IMPACT", "INSUFFICIENT_DATA"] },
+              "share_of_operations": { "$ref": "common.schema.json#/$defs/percent" },
+              "revenue_involved": { "$ref": "common.schema.json#/$defs/money" },
+              "required_evidence": { "type": "array", "items": { "type": "string", "minLength": 1 } },
+              "operational_deadline": { "$ref": "common.schema.json#/$defs/date" }
+            },
+            "required": ["taxpayer", "status"]
+          }
+        }
+      },
+      "required": ["criteria", "taxpayers"]
+    },
+    "review": { "$ref": "common.schema.json#/$defs/review_id" },
+    "status": { "type": "string", "enum": ["DETECTED", "ANALYZED", "UNDER_REVIEW", "PROMOTED", "DISCARDED"] },
+    "provenance": { "$ref": "common.schema.json#/$defs/provenance" }
+  },
+  "required": ["id", "detected_at", "source", "evidence", "change_summary", "status", "provenance"],
+  "allOf": [
+    {
+      "if": { "properties": { "status": { "enum": ["ANALYZED", "UNDER_REVIEW", "PROMOTED"] } } },
+      "then": { "required": ["impact_analysis"] }
+    },
+    {
+      "if": { "properties": { "status": { "const": "PROMOTED" } } },
+      "then": { "required": ["review", "proposed_rules"], "properties": { "proposed_rules": { "minItems": 1 } } }
+    }
+  ]
+}

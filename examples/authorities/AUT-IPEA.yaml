@@ -1,0 +1,12 @@
+authority_id: AUT-IPEA
+name: Instituto de Pesquisa Econômica Aplicada
+kind: RESEARCH_INSTITUTE
+authority_level: RESEARCH
+can_assert:
+  - evidência econômica
+  - incidência e distribuição
+  - efeitos observados
+  - pesquisas
+cannot_decide:
+  - obrigação fiscal individual
+url: https://www.ipea.gov.br/

@@ -1,0 +1,78 @@
+decision_id: ADV-0034-2026-09-001
+taxpayer: TP-0034
+question: Vale a pena reestruturar a operação para 2027 conforme o cenário alternativo?
+product: SIMULADOR_ESTRATEGICO
+nature: SCENARIO
+headline:
+  label: economia potencial
+  value:
+    amount: 317442
+    currency: BRL
+applicable_period:
+  from: 2027-01-01
+  to: 2027-12-31
+derives_from:
+  - CLM-0034-SCENARIO-2027
+  - CLM-0034-CBS-2026-01
+  - CLM-0034-BENCHMARK-01
+premises_total: 7
+premises_verified: 5
+premises_unverified: 2
+scenarios:
+  - label: Cenário atual (Lucro Presumido) — carga total 2027
+    value:
+      amount: 1951558
+      currency: BRL
+    claim: CLM-0034-SCENARIO-2027
+  - label: Cenário alternativo — carga total 2027
+    value:
+      amount: 1634116
+      currency: BRL
+    claim: CLM-0034-SCENARIO-2027
+sensitivity:
+  - driver: mix estadual de vendas (PB/PE/SP)
+    share_of_outcome:
+      value: 38
+      unit: percent
+    premise: P2
+  - driver: alíquotas de referência de 2027
+    share_of_outcome:
+      value: 25
+      unit: percent
+    premise: P5
+actions:
+  - action: Ingerir a regulamentação de 2027 e reexecutar o cenário sob regra ACTIVE
+    evidence_strength: CENARIO
+    risk: NAO_AVALIADO
+    claim: CLM-0034-SCENARIO-2027
+  - action: Conferir a alíquota de teste de 2026 contra o texto da LC 214/2025
+    evidence_strength: ALTA
+    risk: BAIXO
+    claim: CLM-0034-CBS-2026-01
+missing_evidence:
+  - Texto normativo das alíquotas de 2027 ingerido como Source com hash
+  - Conferência das evidências normativas PENDING contra os arquivos recuperados
+  - Regra própria para a dispensa de recolhimento condicionada a obrigações acessórias em 2026
+normative_snapshot: CANON-2026-09-15
+source_set:
+  - SRC-RFB-LC214
+  - SRC-RFB-ENTENDA-RTC
+  - SRC-CLIENT-0034-SPED-2026-01
+  - SRC-CLIENT-0034-NFSE-2026-01
+  - SRC-CLIENT-0034-ERP-2026
+  - SRC-IPEA-CGCOM-ALIQUOTA-EFETIVA
+calculation_version: TAXENGINE-0.8.3
+status: DRAFT
+provenance:
+  created_at: "2026-09-15T17:00:00-03:00"
+  created_by: ponte-advisory-layer
+  method: LLM_ASSISTED
+  tool: ponte-advisory-layer
+  tool_version: 0.1.0
+  inputs:
+    - CLM-0034-SCENARIO-2027
+    - CLM-0034-CBS-2026-01
+    - CLM-0034-BENCHMARK-01
+  notes: >-
+    Fixture. Permanece DRAFT: sem Review aprovada e com 2 premissas não
+    verificadas, não pode ser entregue ao empresário.

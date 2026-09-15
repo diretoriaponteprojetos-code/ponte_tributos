@@ -1,0 +1,11 @@
+review_id: REV-0002
+object_id: TAX-IBS-2026-001
+reviewer:
+  name: Revisor(a) fictício(a)
+  role: ESPECIALISTA_TRIBUTARIO
+outcome: APPROVED
+reviewed_at: "2026-09-15T14:05:00-03:00"
+notes: Fixture. Ver REV-0001.
+checked_evidence:
+  - EV-000381
+  - EV-000382

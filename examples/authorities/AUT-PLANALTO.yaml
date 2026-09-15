@@ -1,0 +1,11 @@
+authority_id: AUT-PLANALTO
+name: Presidência da República (Planalto)
+kind: FEDERAL_EXECUTIVE
+authority_level: NORMATIVE
+jurisdiction:
+  level: FEDERAL
+can_assert:
+  - texto vigente de leis, leis complementares, decretos e medidas provisórias
+cannot_decide:
+  - se determinada estratégia é economicamente melhor para a empresa
+url: https://www.planalto.gov.br/

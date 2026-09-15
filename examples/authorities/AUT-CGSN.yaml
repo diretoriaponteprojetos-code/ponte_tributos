@@ -1,0 +1,10 @@
+authority_id: AUT-CGSN
+name: Comitê Gestor do Simples Nacional
+kind: SIMPLES_COMMITTEE
+authority_level: NORMATIVE
+jurisdiction:
+  level: FEDERAL
+can_assert:
+  - regras de apuração, enquadramento e obrigações do Simples Nacional
+cannot_decide:
+  - se determinada estratégia é economicamente melhor para a empresa

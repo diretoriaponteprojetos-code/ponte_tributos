@@ -1,0 +1,35 @@
+rule_id: RULE-100
+title: Simples Nacional — apuração mensal (anterior à adequação ao IBS/CBS)
+subject:
+  tax: SIMPLES_NACIONAL
+  incidence_hypothesis: apuração mensal unificada do Simples Nacional
+scope:
+  jurisdiction:
+    level: FEDERAL
+  regimes:
+    - SIMPLES_NACIONAL
+condition:
+  event_date:
+    from: 2018-08-01
+    to: 2026-08-31
+effect:
+  kind: OBLIGATION
+  description: Apuração mensal pelo PGDAS-D conforme Resolução CGSN 140/2018 (redação anterior).
+authority:
+  source: SRC-CGSN-RES-140
+validity:
+  publication_date: 2018-05-22
+  valid_from: 2018-08-01
+  valid_until: 2026-08-31
+  retrieved_at: 2026-09-15
+status: SUPERSEDED
+superseded_by: RULE-101
+evidence:
+  - EV-CGSN-140-001
+provenance:
+  created_at: "2026-09-15T12:00:00-03:00"
+  created_by: fundacao-repositorio
+  method: MANUAL
+  notes: >-
+    Fixture da cadeia supersedes. Permanece consultável: o passado continua
+    reproduzível (docs/arquitetura/04-temporalidade.md).

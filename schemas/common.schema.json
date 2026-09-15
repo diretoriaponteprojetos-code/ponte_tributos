@@ -1,0 +1,192 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://ponte-projetos.dev/schemas/common.schema.json",
+  "title": "Definições compartilhadas do modelo canônico PONTE Tributos",
+  "$defs": {
+    "date": {
+      "type": "string",
+      "format": "date",
+      "pattern": "^\\d{4}-\\d{2}-\\d{2}$"
+    },
+    "datetime": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "nullable_date": {
+      "oneOf": [{ "$ref": "#/$defs/date" }, { "type": "null" }]
+    },
+    "sha256": {
+      "type": "string",
+      "pattern": "^[a-f0-9]{64}$"
+    },
+    "git_commit": {
+      "type": "string",
+      "pattern": "^[a-f0-9]{7,40}$"
+    },
+    "cnpj": {
+      "type": "string",
+      "pattern": "^\\d{2}\\.\\d{3}\\.\\d{3}/\\d{4}-\\d{2}$"
+    },
+    "cnae": {
+      "type": "string",
+      "pattern": "^\\d{4}-\\d/\\d{2}$"
+    },
+    "ncm": {
+      "type": "string",
+      "pattern": "^\\d{4}\\.\\d{2}\\.\\d{2}$"
+    },
+    "nbs": {
+      "type": "string",
+      "pattern": "^\\d\\.\\d{4}\\.\\d{2}\\.\\d{2}$"
+    },
+    "uf": {
+      "type": "string",
+      "enum": [
+        "AC", "AL", "AP", "AM", "BA", "CE", "DF", "ES", "GO", "MA", "MT", "MS", "MG",
+        "PA", "PB", "PR", "PE", "PI", "RJ", "RN", "RS", "RO", "RR", "SC", "SP", "SE", "TO"
+      ]
+    },
+    "source_id": { "type": "string", "pattern": "^SRC-[A-Z0-9-]+$" },
+    "evidence_id": { "type": "string", "pattern": "^EV-[A-Z0-9-]+$" },
+    "authority_id": { "type": "string", "pattern": "^AUT-[A-Z0-9-]+$" },
+    "rule_id": { "type": "string", "pattern": "^(RULE|TAX)-[A-Z0-9-]+$" },
+    "entity_id": { "type": "string", "pattern": "^ENT-[A-Z0-9-]+$" },
+    "taxpayer_id": { "type": "string", "pattern": "^TP-[A-Z0-9-]+$" },
+    "transaction_id": { "type": "string", "pattern": "^TX-[A-Z0-9-]+$" },
+    "tax_treatment_id": { "type": "string", "pattern": "^TT-[A-Z0-9-]+$" },
+    "calculation_id": { "type": "string", "pattern": "^CALC-[A-Z0-9-]+$" },
+    "observation_id": { "type": "string", "pattern": "^OBS-[A-Z0-9-]+$" },
+    "claim_id": { "type": "string", "pattern": "^CLM-[A-Z0-9-]+$" },
+    "decision_id": { "type": "string", "pattern": "^ADV-[A-Z0-9-]+$" },
+    "research_finding_id": { "type": "string", "pattern": "^RF-[A-Z0-9-]+$" },
+    "candidate_update_id": { "type": "string", "pattern": "^CU-[A-Z0-9-]+$" },
+    "version_id": { "type": "string", "pattern": "^VER-[A-Z0-9-]+$" },
+    "review_id": { "type": "string", "pattern": "^REV-[A-Z0-9-]+$" },
+    "normative_snapshot": {
+      "type": "string",
+      "pattern": "^CANON-\\d{4}-\\d{2}-\\d{2}$",
+      "description": "Conjunto de regras ACTIVE em uma data. Ver docs/arquitetura/04-temporalidade.md"
+    },
+    "authority_level": {
+      "type": "string",
+      "enum": [
+        "NORMATIVE",
+        "OFFICIAL_DATA",
+        "RESEARCH",
+        "SOFTWARE",
+        "CLIENT_RECORD",
+        "PROFESSIONAL_JUDGMENT"
+      ],
+      "description": "Ver docs/arquitetura/02-fontes-e-autoridade.md"
+    },
+    "tax": {
+      "type": "string",
+      "enum": [
+        "IBS", "CBS", "IS",
+        "ICMS", "ICMS_ST", "IPI", "PIS", "COFINS", "ISS",
+        "IRPJ", "CSLL", "SIMPLES_NACIONAL",
+        "INSS_PATRONAL", "FGTS", "OUTRO"
+      ]
+    },
+    "regime": {
+      "type": "string",
+      "enum": ["MEI", "SIMPLES_NACIONAL", "LUCRO_PRESUMIDO", "LUCRO_REAL", "IMUNE_ISENTA"]
+    },
+    "jurisdiction": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "level": { "type": "string", "enum": ["FEDERAL", "ESTADUAL", "MUNICIPAL"] },
+        "uf": { "$ref": "#/$defs/uf" },
+        "municipality_ibge": { "type": "string", "pattern": "^\\d{7}$" }
+      },
+      "required": ["level"]
+    },
+    "money": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "amount": { "type": "number" },
+        "currency": { "type": "string", "enum": ["BRL"] }
+      },
+      "required": ["amount", "currency"]
+    },
+    "percent": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "value": { "type": "number", "minimum": 0, "maximum": 100 },
+        "unit": { "type": "string", "const": "percent" }
+      },
+      "required": ["value", "unit"]
+    },
+    "period": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "from": { "$ref": "#/$defs/date" },
+        "to": { "$ref": "#/$defs/date" }
+      },
+      "required": ["from", "to"]
+    },
+    "validity": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "publication_date": { "$ref": "#/$defs/date" },
+        "legal_effect_from": { "$ref": "#/$defs/date" },
+        "legal_effect_until": { "$ref": "#/$defs/nullable_date" },
+        "retrieved_at": { "$ref": "#/$defs/date" }
+      },
+      "required": ["legal_effect_from", "legal_effect_until"]
+    },
+    "provenance": {
+      "type": "object",
+      "additionalProperties": false,
+      "description": "Como, quando, por quem e com qual ferramenta o objeto foi produzido",
+      "properties": {
+        "created_at": { "$ref": "#/$defs/datetime" },
+        "created_by": { "type": "string", "minLength": 1 },
+        "method": {
+          "type": "string",
+          "enum": ["MANUAL", "INGESTION", "COMPUTATION", "LLM_ASSISTED", "WATCHER"]
+        },
+        "tool": { "type": "string" },
+        "tool_version": { "type": "string" },
+        "inputs": {
+          "type": "array",
+          "items": { "type": "string" },
+          "description": "IDs de objetos canônicos usados como entrada"
+        },
+        "notes": { "type": "string" }
+      },
+      "required": ["created_at", "created_by", "method"],
+      "allOf": [
+        {
+          "if": { "properties": { "method": { "enum": ["COMPUTATION", "LLM_ASSISTED", "WATCHER"] } } },
+          "then": { "required": ["tool", "tool_version"] }
+        }
+      ]
+    },
+    "premise": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "id": { "type": "string", "pattern": "^P\\d+$" },
+        "statement": { "type": "string", "minLength": 1 },
+        "status": { "type": "string", "enum": ["VERIFIED", "UNVERIFIED", "CONTRADICTED"] },
+        "supported_by": {
+          "type": "array",
+          "items": { "$ref": "#/$defs/evidence_id" }
+        }
+      },
+      "required": ["id", "statement", "status"],
+      "allOf": [
+        {
+          "if": { "properties": { "status": { "const": "VERIFIED" } } },
+          "then": { "required": ["supported_by"], "properties": { "supported_by": { "minItems": 1 } } }
+        }
+      ]
+    }
+  }
+}

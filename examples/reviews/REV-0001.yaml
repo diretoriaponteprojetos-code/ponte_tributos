@@ -1,0 +1,11 @@
+review_id: REV-0001
+object_id: TAX-CBS-2026-001
+reviewer:
+  name: Revisor(a) fictício(a)
+  role: ESPECIALISTA_TRIBUTARIO
+outcome: APPROVED
+reviewed_at: "2026-09-15T14:00:00-03:00"
+notes: Fixture. Em operação real, a aprovação exige as evidências conferidas contra a fonte.
+checked_evidence:
+  - EV-000381
+  - EV-000382

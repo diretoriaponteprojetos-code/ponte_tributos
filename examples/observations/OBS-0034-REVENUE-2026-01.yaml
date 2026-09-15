@@ -1,0 +1,19 @@
+observation_id: OBS-0034-REVENUE-2026-01
+taxpayer: TP-0034
+metric: REVENUE
+period:
+  from: 2026-01-01
+  to: 2026-01-31
+value:
+  amount: 700000
+  currency: BRL
+evidence:
+  - EV-CLIENT-0034
+  - EV-CLIENT-0035
+provenance:
+  created_at: "2026-02-10T10:00:00-03:00"
+  created_by: ponte-ingestion
+  method: INGESTION
+  tool: ponte-sped-adapter
+  tool_version: 0.1.0
+  notes: Fixture.

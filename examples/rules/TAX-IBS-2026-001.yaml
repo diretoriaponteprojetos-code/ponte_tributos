@@ -1,0 +1,41 @@
+rule_id: TAX-IBS-2026-001
+title: IBS — alíquota estadual de teste em 2026
+subject:
+  tax: IBS
+  incidence_hypothesis: operações com bens e serviços no ano-calendário de 2026
+scope:
+  jurisdiction:
+    level: ESTADUAL
+  taxpayer_conditions:
+    - contribuinte sujeito ao IBS no período de teste
+condition:
+  event_date:
+    from: 2026-01-01
+    to: 2026-12-31
+effect:
+  kind: RATE
+  rate:
+    value: 0.1
+    unit: percent
+exceptions:
+  - description: >-
+      Dispensa de recolhimento condicionada ao cumprimento de obrigações
+      acessórias, conforme orientações da RFB para 2026 (a modelar como regra própria).
+authority:
+  source: SRC-RFB-LC214
+  article: "343"
+validity:
+  publication_date: 2025-01-16
+  valid_from: 2026-01-01
+  valid_until: 2026-12-31
+  retrieved_at: 2026-09-15
+status: ACTIVE
+evidence:
+  - EV-000381
+  - EV-000382
+review: REV-0002
+provenance:
+  created_at: "2026-09-15T12:00:00-03:00"
+  created_by: fundacao-repositorio
+  method: MANUAL
+  notes: Exemplo de referência; ver nota em TAX-CBS-2026-001.

@@ -1,0 +1,42 @@
+calculation_id: CALC-0034-MCIBR-CBS-2026-01
+purpose: Mesmo caso de CALC-0034-CBS-2026-01 executado no MCIBr, para teste do motor candidato
+engine:
+  name: MCIBr
+  version: 0.0.0-fixture
+  commit: "0000000"
+  source: SRC-GITHUB-MCIBR
+  role: CANDIDATE
+taxpayer: TP-0034
+period:
+  from: 2026-01-01
+  to: 2026-01-31
+normative_snapshot: CANON-2026-09-15
+governed_by:
+  - TAX-CBS-2026-001
+inputs:
+  - TX-0034-000001
+parameters:
+  cbs_rate_percent: 0.9
+  note: parâmetro fornecido pela regra canônica, nunca pelo exemplo do manual
+outputs:
+  cbs_amount:
+    amount: 1080
+    currency: BRL
+reference_result:
+  cbs_amount:
+    amount: 1080
+    currency: BRL
+comparison:
+  status: MATCH
+  tolerance: 0.01
+  notes: Resultado de referência produzido por CALC-0034-CBS-2026-01.
+reproducible: true
+provenance:
+  created_at: "2026-09-15T15:10:00-03:00"
+  created_by: ponte-engine-harness
+  method: COMPUTATION
+  tool: ponte-engine-harness
+  tool_version: 0.1.0
+  inputs:
+    - CALC-0034-CBS-2026-01
+  notes: Fixture.
