@@ -53,3 +53,12 @@ Um PDF ou RAG congelado envelheceria imediatamente. Ver [`06-watcher-normativo.m
 ## Fontes ainda não recuperadas
 
 - Ipea, handle `11058/17421`: o repositório respondeu com timeout na sessão de fundação. Nenhum conteúdo deve ser atribuído a esse item até que o PDF e os metadados sejam recuperados e registrados como `Source` com hash. O exemplo em [`examples/sources/SRC-IPEA-17421.yaml`](../../examples/sources/SRC-IPEA-17421.yaml) está marcado como `retrieval_status: PENDING`.
+- LC 214/2025 (`SRC-RFB-LC214`): o ambiente de fundação bloqueava, por política de rede, planalto.gov.br, gov.br, camara.leg.br, senado.leg.br, normas.leg.br, lexml.gov.br e in.gov.br. O texto literal não foi recuperado. A conferência de locator foi feita por convergência de fontes secundárias (Sindifisco, ConJur, TaxUp, Jurídico Certo e outras): **art. 343** fixa o IBS estadual a 0,1% em 2026, **art. 346** fixa a CBS a 0,9% em 2026 e **art. 348, § 1º** condiciona a dispensa de recolhimento ao cumprimento das obrigações acessórias. Isso corrige a primeira versão do repositório, que atribuía as duas alíquotas ao art. 343. Fontes secundárias fixam locator, nunca promovem evidência: a promoção a `VERIFIED_AGAINST_SOURCE` só acontece após rodar `tools/ingest_source.py` contra o Planalto e conferir a redação.
+
+## Como recuperar uma fonte
+
+```bash
+python tools/ingest_source.py SRC-RFB-LC214 --grep "Art. 346"
+```
+
+O script baixa o arquivo da `url` da fonte para `sources_cache/`, grava o `sha256`, atualiza `retrieved_at` e `retrieval_status` no YAML, e imprime as ocorrências do padrão com contexto para conferência humana. Ele nunca altera uma `Evidence`.
