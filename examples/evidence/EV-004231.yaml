@@ -1,0 +1,20 @@
+evidence_id: EV-004231
+source: SRC-RFB-ARRECADACAO-CNAE
+kind: VALUE
+locator:
+  dataset: arrecadacao_cnae
+  row: "2025;6201-5/01;PB"
+dimensions:
+  year: 2025
+  cnae: 6201-5/01
+  geography: PB
+value: 48250000
+unit: BRL
+observed_at: 2026-09-15
+verification_status: PENDING
+client_specific: false
+provenance:
+  created_at: "2026-09-15T12:00:00-03:00"
+  created_by: fundacao-repositorio
+  method: MANUAL
+  notes: "FIXTURE: valor ilustrativo, não observado no dataset real."

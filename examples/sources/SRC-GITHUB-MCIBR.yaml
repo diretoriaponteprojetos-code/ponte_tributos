@@ -1,0 +1,14 @@
+id: SRC-GITHUB-MCIBR
+type: software
+authority_level: SOFTWARE
+authority: AUT-MCIBR
+publisher: MCIBr
+title: MCIBr — manual e biblioteca de cálculo de impostos
+repository: MCIBr/MCIBr
+commit: "0000000"
+retrieved_at: 2026-09-15
+retrieval_status: RETRIEVED
+sha256: "0000000000000000000000000000000000000000000000000000000000000000"
+notes: >-
+  Placeholders de commit e hash: registrar o repositório canônico e o commit
+  efetivamente avaliados. Cobre ICMS, ST, IPI, PIS/Cofins, ISS, Simples, IBS, CBS.

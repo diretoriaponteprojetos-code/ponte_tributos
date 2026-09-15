@@ -1,0 +1,22 @@
+entity_id: ENT-0034
+cnpj: 12.345.678/0001-95
+legal_name: Empresa Exemplo 034 Ltda.
+trade_name: Exemplo 034
+legal_nature_code: 206-2
+headquarters:
+  uf: PB
+  municipality_ibge: "2504009"
+primary_cnae: 6201-5/01
+secondary_cnae:
+  - 6202-3/00
+role:
+  - CLIENT
+evidence:
+  - EV-CLIENT-0034
+provenance:
+  created_at: "2026-02-10T09:00:00-03:00"
+  created_by: ponte-ingestion
+  method: INGESTION
+  tool: ponte-cnpj-adapter
+  tool_version: 0.1.0
+  notes: Fixture. CNPJ fictício.

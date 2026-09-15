@@ -1,0 +1,44 @@
+rule_id: TAX-CBS-2026-001
+title: CBS — alíquota de teste em 2026
+subject:
+  tax: CBS
+  incidence_hypothesis: operações com bens e serviços no ano-calendário de 2026
+scope:
+  jurisdiction:
+    level: FEDERAL
+  taxpayer_conditions:
+    - contribuinte sujeito à CBS no período de teste
+condition:
+  event_date:
+    from: 2026-01-01
+    to: 2026-12-31
+effect:
+  kind: RATE
+  rate:
+    value: 0.9
+    unit: percent
+exceptions:
+  - description: >-
+      Dispensa de recolhimento condicionada ao cumprimento de obrigações
+      acessórias, conforme orientações da RFB para 2026 (a modelar como regra própria).
+authority:
+  source: SRC-RFB-LC214
+  article: "343"
+validity:
+  publication_date: 2025-01-16
+  valid_from: 2026-01-01
+  valid_until: 2026-12-31
+  retrieved_at: 2026-09-15
+status: ACTIVE
+evidence:
+  - EV-000381
+  - EV-000382
+review: REV-0001
+provenance:
+  created_at: "2026-09-15T12:00:00-03:00"
+  created_by: fundacao-repositorio
+  method: MANUAL
+  notes: >-
+    Exemplo de referência. Como as evidências estão PENDING, em operação real
+    esta regra ficaria em DRAFT até a conferência; aqui está ACTIVE apenas para
+    demonstrar a exigência de Review.

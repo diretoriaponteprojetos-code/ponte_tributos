@@ -1,0 +1,92 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://ponte-projetos.dev/schemas/source.schema.json",
+  "title": "Source (L0)",
+  "description": "Tudo entra como fonte, nunca como verdade. Ver docs/arquitetura/01-camadas.md",
+  "type": "object",
+  "additionalProperties": false,
+  "properties": {
+    "id": { "$ref": "common.schema.json#/$defs/source_id" },
+    "type": {
+      "type": "string",
+      "enum": [
+        "legislation",
+        "regulation",
+        "official_guidance",
+        "official_dataset",
+        "research",
+        "software",
+        "client_document",
+        "professional_opinion"
+      ]
+    },
+    "authority_level": { "$ref": "common.schema.json#/$defs/authority_level" },
+    "authority": { "$ref": "common.schema.json#/$defs/authority_id" },
+    "publisher": { "type": "string", "minLength": 1 },
+    "title": { "type": "string", "minLength": 1 },
+    "url": { "type": "string", "format": "uri" },
+    "retrieved_at": { "$ref": "common.schema.json#/$defs/date" },
+    "retrieval_status": {
+      "type": "string",
+      "enum": ["RETRIEVED", "PENDING", "UNRECOVERABLE"],
+      "default": "RETRIEVED"
+    },
+    "sha256": { "$ref": "common.schema.json#/$defs/sha256" },
+    "handle": { "type": "string", "description": "Handle institucional (ex.: Ipea 11058/17421)" },
+    "repository": { "type": "string", "description": "owner/repo para fontes de software" },
+    "commit": { "$ref": "common.schema.json#/$defs/git_commit" },
+    "dataset": { "type": "string", "description": "Identificador do dataset para official_dataset" },
+    "taxpayer": { "$ref": "common.schema.json#/$defs/taxpayer_id" },
+    "notes": { "type": "string" }
+  },
+  "required": ["id", "type", "authority_level", "publisher", "title", "retrieved_at"],
+  "allOf": [
+    {
+      "if": { "properties": { "type": { "const": "software" } } },
+      "then": { "required": ["repository", "commit"] }
+    },
+    {
+      "if": { "properties": { "type": { "const": "official_dataset" } } },
+      "then": { "required": ["dataset"] }
+    },
+    {
+      "if": { "properties": { "type": { "const": "client_document" } } },
+      "then": { "required": ["taxpayer"] }
+    },
+    {
+      "if": {
+        "properties": { "retrieval_status": { "const": "RETRIEVED" } },
+        "required": ["retrieval_status"]
+      },
+      "then": { "required": ["sha256"] }
+    },
+    {
+      "if": { "not": { "required": ["retrieval_status"] } },
+      "then": { "required": ["sha256"] }
+    },
+    {
+      "if": { "properties": { "type": { "enum": ["legislation", "regulation", "official_guidance"] } } },
+      "then": { "properties": { "authority_level": { "const": "NORMATIVE" } } }
+    },
+    {
+      "if": { "properties": { "type": { "const": "official_dataset" } } },
+      "then": { "properties": { "authority_level": { "const": "OFFICIAL_DATA" } } }
+    },
+    {
+      "if": { "properties": { "type": { "const": "research" } } },
+      "then": { "properties": { "authority_level": { "const": "RESEARCH" } } }
+    },
+    {
+      "if": { "properties": { "type": { "const": "software" } } },
+      "then": { "properties": { "authority_level": { "const": "SOFTWARE" } } }
+    },
+    {
+      "if": { "properties": { "type": { "const": "client_document" } } },
+      "then": { "properties": { "authority_level": { "const": "CLIENT_RECORD" } } }
+    },
+    {
+      "if": { "properties": { "type": { "const": "professional_opinion" } } },
+      "then": { "properties": { "authority_level": { "const": "PROFESSIONAL_JUDGMENT" } } }
+    }
+  ]
+}

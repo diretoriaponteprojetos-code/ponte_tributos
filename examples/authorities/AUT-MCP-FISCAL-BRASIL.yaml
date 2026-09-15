@@ -1,0 +1,9 @@
+authority_id: AUT-MCP-FISCAL-BRASIL
+name: mcp-fiscal-brasil (DeHor-Labs)
+kind: SOFTWARE_PROJECT
+authority_level: SOFTWARE
+can_assert:
+  - ferramentas, integrações, parsing, consultas e estimativas
+cannot_decide:
+  - fonte final de verdade tributária
+url: https://github.com/DeHor-Labs/mcp-fiscal-brasil

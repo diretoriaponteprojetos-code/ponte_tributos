@@ -1,0 +1,16 @@
+authority_id: AUT-RFB
+name: Receita Federal do Brasil
+kind: FEDERAL_TAX_ADMIN
+authority_level: NORMATIVE
+jurisdiction:
+  level: FEDERAL
+can_assert:
+  - regra vigente
+  - obrigação acessória
+  - cadastro
+  - arrecadação
+  - leiaute de documentos fiscais
+  - prazo
+cannot_decide:
+  - se determinada estratégia é economicamente melhor para a empresa
+url: https://www.gov.br/receitafederal/

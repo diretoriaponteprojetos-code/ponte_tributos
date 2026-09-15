@@ -1,0 +1,11 @@
+id: SRC-CLIENT-0034-NFSE-2026-01
+type: client_document
+authority_level: CLIENT_RECORD
+authority: AUT-CLIENT-0034
+publisher: Empresa Exemplo 034 Ltda.
+title: Lote de NFS-e emitidas — janeiro de 2026
+taxpayer: TP-0034
+retrieved_at: 2026-02-10
+retrieval_status: RETRIEVED
+sha256: "0000000000000000000000000000000000000000000000000000000000000000"
+notes: Fixture. Placeholder de hash.

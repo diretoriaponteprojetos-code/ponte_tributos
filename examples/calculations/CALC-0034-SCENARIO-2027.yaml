@@ -1,0 +1,40 @@
+calculation_id: CALC-0034-SCENARIO-2027
+purpose: Comparação de cenários tributários para 2027 (regime atual vs. alternativo)
+engine:
+  name: PONTE TaxEngine
+  version: 0.8.3
+  role: CANONICAL
+taxpayer: TP-0034
+period:
+  from: 2027-01-01
+  to: 2027-12-31
+normative_snapshot: CANON-2026-09-15
+governed_by:
+  - TAX-CBS-2026-001
+  - TAX-IBS-2026-001
+inputs:
+  - TP-0034
+  - EV-CLIENT-0036
+parameters:
+  hypothesis_2027_rates: alíquotas de 2027 assumidas iguais às de referência do snapshot; regra de 2027 ainda não modelada
+outputs:
+  scenario_current_total_tax:
+    amount: 1951558
+    currency: BRL
+  scenario_alternative_total_tax:
+    amount: 1634116
+    currency: BRL
+  difference:
+    amount: 317442
+    currency: BRL
+reproducible: true
+provenance:
+  created_at: "2026-09-15T15:30:00-03:00"
+  created_by: ponte-taxengine
+  method: COMPUTATION
+  tool: ponte-taxengine
+  tool_version: 0.8.3
+  inputs:
+    - TP-0034
+    - EV-CLIENT-0036
+  notes: Fixture. Valores ilustrativos.

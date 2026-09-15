@@ -1,0 +1,75 @@
+taxpayer_id: TP-0034
+entity: ENT-0034
+regime: LUCRO_PRESUMIDO
+regime_since: 2022-01-01
+establishments:
+  - cnpj: 12.345.678/0001-95
+    uf: PB
+    municipality_ibge: "2504009"
+    kind: MATRIZ
+economic_activity:
+  primary_cnae: 6201-5/01
+  secondary_cnae:
+    - 6202-3/00
+services:
+  - 1.1403.10.00
+profile_period:
+  from: 2025-09-01
+  to: 2026-08-31
+revenue:
+  trailing_12_months:
+    amount: 8420000
+    currency: BRL
+  by_state:
+    PB:
+      amount: 5220400
+      currency: BRL
+    PE:
+      amount: 2105000
+      currency: BRL
+    SP:
+      amount: 1094600
+      currency: BRL
+  b2b_share:
+    value: 82
+    unit: percent
+  b2c_share:
+    value: 18
+    unit: percent
+payroll:
+  trailing_12_months:
+    amount: 2950000
+    currency: BRL
+  headcount: 41
+purchases:
+  credit_eligible:
+    amount: 1180000
+    currency: BRL
+  non_credit_eligible:
+    amount: 640000
+    currency: BRL
+taxes:
+  assessed:
+    amount: 1634000
+    currency: BRL
+  paid:
+    amount: 1634000
+    currency: BRL
+fiscal_documents:
+  nfe: false
+  nfse: true
+  sped_efd_icms_ipi: true
+  sped_efd_contribuicoes: true
+  sped_ecd: true
+  sped_ecf: true
+evidence:
+  - EV-CLIENT-0034
+  - EV-CLIENT-0035
+  - EV-CLIENT-0036
+provenance:
+  created_at: "2026-09-10T16:00:00-03:00"
+  created_by: ponte-ingestion
+  method: INGESTION
+  tool: ponte-digital-twin
+  tool_version: 0.1.0
+  notes: Fixture. Todos os valores são ilustrativos.

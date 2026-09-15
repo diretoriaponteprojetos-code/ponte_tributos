@@ -1,0 +1,67 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://ponte-projetos.dev/schemas/evidence.schema.json",
+  "title": "Evidence (L1)",
+  "description": "Aqui nada é interpretado. Trecho, valor ou registro recuperável até o original.",
+  "type": "object",
+  "additionalProperties": false,
+  "properties": {
+    "evidence_id": { "$ref": "common.schema.json#/$defs/evidence_id" },
+    "source": { "$ref": "common.schema.json#/$defs/source_id" },
+    "kind": { "type": "string", "enum": ["TEXT", "VALUE", "RECORD"] },
+    "locator": {
+      "type": "object",
+      "description": "Localização dentro da fonte. Chaves livres, mas ao menos uma é obrigatória.",
+      "minProperties": 1,
+      "properties": {
+        "article": { "type": "string" },
+        "paragraph": { "type": "string" },
+        "item": { "type": "string" },
+        "page": { "type": "integer", "minimum": 1 },
+        "section": { "type": "string" },
+        "registro": { "type": "string", "description": "Registro SPED (ex.: C190)" },
+        "dataset": { "type": "string" },
+        "row": { "type": "string" },
+        "file": { "type": "string" },
+        "line": { "type": "integer", "minimum": 1 }
+      }
+    },
+    "text": { "type": "string", "minLength": 1 },
+    "value": { "type": ["number", "string", "boolean"] },
+    "unit": { "type": "string" },
+    "dimensions": {
+      "type": "object",
+      "description": "Dimensões de um valor de dataset (ano, CNAE, UF, ...)",
+      "additionalProperties": { "type": ["string", "number"] }
+    },
+    "period": { "$ref": "common.schema.json#/$defs/period" },
+    "observed_at": { "$ref": "common.schema.json#/$defs/date" },
+    "verification_status": {
+      "type": "string",
+      "enum": ["PENDING", "VERIFIED_AGAINST_SOURCE", "UNRECOVERABLE"],
+      "description": "PENDING até que alguém confira o trecho contra a fonte recuperada"
+    },
+    "client_specific": { "type": "boolean" },
+    "taxpayer": { "$ref": "common.schema.json#/$defs/taxpayer_id" },
+    "provenance": { "$ref": "common.schema.json#/$defs/provenance" }
+  },
+  "required": ["evidence_id", "source", "kind", "locator", "observed_at", "verification_status", "client_specific"],
+  "allOf": [
+    {
+      "if": { "properties": { "kind": { "const": "TEXT" } } },
+      "then": { "required": ["text"] }
+    },
+    {
+      "if": { "properties": { "kind": { "const": "VALUE" } } },
+      "then": { "required": ["value", "unit"] }
+    },
+    {
+      "if": { "properties": { "kind": { "const": "RECORD" } } },
+      "then": { "required": ["period"] }
+    },
+    {
+      "if": { "properties": { "client_specific": { "const": true } } },
+      "then": { "required": ["taxpayer"] }
+    }
+  ]
+}

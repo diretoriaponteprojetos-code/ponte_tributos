@@ -1,0 +1,11 @@
+authority_id: AUT-OBSERVABR
+name: Observatório Brasileiro do Sistema Tributário
+kind: OBSERVATORY
+authority_level: RESEARCH
+can_assert:
+  - estudos
+  - evidências
+  - interpretações e debate tributário
+cannot_decide:
+  - regra jurídica vigente
+url: https://observabr.org.br/

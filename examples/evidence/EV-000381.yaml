@@ -1,0 +1,20 @@
+evidence_id: EV-000381
+source: SRC-RFB-LC214
+kind: TEXT
+locator:
+  article: "343"
+text: >-
+  Durante o ano de 2026, o IBS será cobrado à alíquota estadual de 0,1% (um décimo
+  por cento) e a CBS à alíquota de 0,9% (nove décimos por cento).
+observed_at: 2026-09-15
+verification_status: PENDING
+client_specific: false
+provenance:
+  created_at: "2026-09-15T12:00:00-03:00"
+  created_by: fundacao-repositorio
+  method: MANUAL
+  notes: >-
+    Texto e locator transcritos de memória na sessão de fundação. O documento
+    fundador citava art. 346; o art. 343 é a melhor referência conhecida.
+    Ambos devem ser conferidos contra o arquivo recuperado antes de
+    verification_status virar VERIFIED_AGAINST_SOURCE.

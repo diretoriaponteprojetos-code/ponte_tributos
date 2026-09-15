@@ -1,0 +1,16 @@
+evidence_id: EV-000382
+source: SRC-RFB-ENTENDA-RTC
+kind: TEXT
+locator:
+  section: Transição — 2026
+text: >-
+  Em 2026 a CBS será cobrada à alíquota de 0,9% e o IBS à alíquota de 0,1%,
+  em caráter de teste.
+observed_at: 2026-09-15
+verification_status: PENDING
+client_specific: false
+provenance:
+  created_at: "2026-09-15T12:00:00-03:00"
+  created_by: fundacao-repositorio
+  method: MANUAL
+  notes: Paráfrase da página institucional; substituir pela citação literal ao conferir.

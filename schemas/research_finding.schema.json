@@ -1,0 +1,35 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://ponte-projetos.dev/schemas/research_finding.schema.json",
+  "title": "ResearchFinding",
+  "description": "Achado de pesquisa (Ipea, ObservaBR). Um estudo sobre 100 mil empresas não prova nada sobre a Empresa X: client_specific é sempre false.",
+  "type": "object",
+  "additionalProperties": false,
+  "properties": {
+    "id": { "$ref": "common.schema.json#/$defs/research_finding_id" },
+    "claim": { "type": "string", "minLength": 1 },
+    "population": { "type": "string", "minLength": 1 },
+    "period": { "$ref": "common.schema.json#/$defs/period" },
+    "method": { "type": "string", "minLength": 1 },
+    "source": { "$ref": "common.schema.json#/$defs/source_id" },
+    "evidence": {
+      "type": "array",
+      "minItems": 1,
+      "items": { "$ref": "common.schema.json#/$defs/evidence_id" }
+    },
+    "applicability": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "client_specific": { "type": "boolean", "const": false },
+        "taxes": { "type": "array", "items": { "$ref": "common.schema.json#/$defs/tax" } },
+        "regimes": { "type": "array", "items": { "$ref": "common.schema.json#/$defs/regime" } },
+        "notes": { "type": "string" }
+      },
+      "required": ["client_specific"]
+    },
+    "use": { "type": "string", "enum": ["benchmark", "context", "hypothesis_generation"] },
+    "provenance": { "$ref": "common.schema.json#/$defs/provenance" }
+  },
+  "required": ["id", "claim", "population", "period", "method", "source", "evidence", "applicability", "use", "provenance"]
+}

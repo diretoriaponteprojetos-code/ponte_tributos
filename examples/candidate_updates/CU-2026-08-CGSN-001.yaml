@@ -1,0 +1,31 @@
+id: CU-2026-08-CGSN-001
+detected_at: "2026-09-15T08:00:00-03:00"
+source: SRC-RFB-NOTICIA-CGSN-2026-08
+evidence:
+  - EV-CGSN-2026-08-001
+change_summary: CGSN atualiza regras do Simples Nacional para adequação ao IBS/CBS.
+affected_rules:
+  - RULE-100
+proposed_rules:
+  - RULE-101
+impact_analysis:
+  criteria:
+    taxes:
+      - SIMPLES_NACIONAL
+      - IBS
+      - CBS
+    regimes:
+      - SIMPLES_NACIONAL
+    effective_from: 2026-09-01
+  taxpayers:
+    - taxpayer: TP-0034
+      status: NOT_AFFECTED
+      required_evidence: []
+status: ANALYZED
+provenance:
+  created_at: "2026-09-15T08:00:00-03:00"
+  created_by: watcher-normativo
+  method: WATCHER
+  tool: ponte-watcher
+  tool_version: 0.1.0
+  notes: TP-0034 está no Lucro Presumido, fora do critério de regime.

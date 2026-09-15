@@ -1,0 +1,40 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://ponte-projetos.dev/schemas/entity.schema.json",
+  "title": "Entity (L3)",
+  "description": "Pessoa jurídica: cliente, fornecedor ou contraparte.",
+  "type": "object",
+  "additionalProperties": false,
+  "properties": {
+    "entity_id": { "$ref": "common.schema.json#/$defs/entity_id" },
+    "cnpj": { "$ref": "common.schema.json#/$defs/cnpj" },
+    "legal_name": { "type": "string", "minLength": 1 },
+    "trade_name": { "type": "string" },
+    "legal_nature_code": { "type": "string", "pattern": "^\\d{3}-\\d$" },
+    "headquarters": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "uf": { "$ref": "common.schema.json#/$defs/uf" },
+        "municipality_ibge": { "type": "string", "pattern": "^\\d{7}$" }
+      },
+      "required": ["uf"]
+    },
+    "primary_cnae": { "$ref": "common.schema.json#/$defs/cnae" },
+    "secondary_cnae": {
+      "type": "array",
+      "items": { "$ref": "common.schema.json#/$defs/cnae" }
+    },
+    "role": {
+      "type": "array",
+      "minItems": 1,
+      "items": { "type": "string", "enum": ["CLIENT", "SUPPLIER", "CUSTOMER", "RELATED_PARTY"] }
+    },
+    "evidence": {
+      "type": "array",
+      "items": { "$ref": "common.schema.json#/$defs/evidence_id" }
+    },
+    "provenance": { "$ref": "common.schema.json#/$defs/provenance" }
+  },
+  "required": ["entity_id", "cnpj", "legal_name", "role", "provenance"]
+}

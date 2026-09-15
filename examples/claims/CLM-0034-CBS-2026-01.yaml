@@ -1,0 +1,60 @@
+claim_id: CLM-0034-CBS-2026-01
+statement: >-
+  A CBS de teste devida sobre a operação TX-0034-000001, em janeiro de 2026,
+  é de R$ 1.080,00, à alíquota de 0,9% sobre R$ 120.000,00.
+nature: COMPUTATION
+taxpayer: TP-0034
+period:
+  from: 2026-01-01
+  to: 2026-01-31
+jurisdiction:
+  level: FEDERAL
+value:
+  amount: 1080
+  currency: BRL
+supported_by:
+  - EV-000381
+  - EV-000382
+  - EV-CLIENT-0035
+governed_by:
+  - TAX-CBS-2026-001
+derived_from:
+  - CALC-0034-CBS-2026-01
+premises:
+  - id: P1
+    statement: Alíquota de teste da CBS em 2026 é 0,9% (EV-000381, pendente de conferência contra a fonte).
+    status: UNVERIFIED
+  - id: P2
+    statement: Valor da operação de R$ 120.000,00 conforme NFS-e 000123.
+    status: VERIFIED
+    supported_by:
+      - EV-CLIENT-0035
+normative_snapshot: CANON-2026-09-15
+verification:
+  status: PARTIALLY_SUPPORTED
+  checks:
+    source_exists: PASS
+    authority_sufficient: PASS
+    in_force: PASS
+    scope: PASS
+    entity: PASS
+    product_or_cnae: PASS
+    jurisdiction: PASS
+    period: PASS
+    exceptions: UNKNOWN
+    contradictory_evidence: PASS
+    reproducible: PASS
+    free_of_hypothesis: PASS
+  checked_at: "2026-09-15T16:00:00-03:00"
+  checked_by: ponte-confrontation-engine
+  notes: >-
+    exceptions UNKNOWN: a dispensa de recolhimento condicionada a obrigações
+    acessórias ainda não está modelada como regra própria.
+provenance:
+  created_at: "2026-09-15T16:00:00-03:00"
+  created_by: ponte-confrontation-engine
+  method: COMPUTATION
+  tool: ponte-confrontation-engine
+  tool_version: 0.1.0
+  inputs:
+    - CALC-0034-CBS-2026-01

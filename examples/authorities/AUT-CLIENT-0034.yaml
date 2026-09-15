@@ -1,0 +1,8 @@
+authority_id: AUT-CLIENT-0034
+name: Empresa Exemplo 034 Ltda. (cliente fictício)
+kind: CLIENT
+authority_level: CLIENT_RECORD
+can_assert:
+  - o que efetivamente ocorreu na empresa
+cannot_decide:
+  - norma aplicável

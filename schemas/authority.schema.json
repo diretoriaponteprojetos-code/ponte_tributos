@@ -1,0 +1,46 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://ponte-projetos.dev/schemas/authority.schema.json",
+  "title": "Authority (transversal)",
+  "description": "Quem pode afirmar o quê. Ver docs/arquitetura/02-fontes-e-autoridade.md",
+  "type": "object",
+  "additionalProperties": false,
+  "properties": {
+    "authority_id": { "$ref": "common.schema.json#/$defs/authority_id" },
+    "name": { "type": "string", "minLength": 1 },
+    "kind": {
+      "type": "string",
+      "enum": [
+        "FEDERAL_LEGISLATURE",
+        "FEDERAL_EXECUTIVE",
+        "FEDERAL_TAX_ADMIN",
+        "IBS_COMMITTEE",
+        "SIMPLES_COMMITTEE",
+        "CONFAZ",
+        "STATE_TAX_ADMIN",
+        "MUNICIPAL_TAX_ADMIN",
+        "RESEARCH_INSTITUTE",
+        "OBSERVATORY",
+        "SOFTWARE_PROJECT",
+        "CLIENT",
+        "PROFESSIONAL"
+      ]
+    },
+    "authority_level": { "$ref": "common.schema.json#/$defs/authority_level" },
+    "jurisdiction": { "$ref": "common.schema.json#/$defs/jurisdiction" },
+    "can_assert": {
+      "type": "array",
+      "minItems": 1,
+      "items": { "type": "string", "minLength": 1 },
+      "description": "O que esta fonte pode dizer"
+    },
+    "cannot_decide": {
+      "type": "array",
+      "minItems": 1,
+      "items": { "type": "string", "minLength": 1 },
+      "description": "O que esta fonte não deveria decidir"
+    },
+    "url": { "type": "string", "format": "uri" }
+  },
+  "required": ["authority_id", "name", "kind", "authority_level", "can_assert", "cannot_decide"]
+}

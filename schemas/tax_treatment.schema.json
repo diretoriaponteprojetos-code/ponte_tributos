@@ -1,0 +1,40 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://ponte-projetos.dev/schemas/tax_treatment.schema.json",
+  "title": "TaxTreatment (L4)",
+  "description": "Tratamento tributário aplicado a uma operação ou classe de operações, sob uma regra.",
+  "type": "object",
+  "additionalProperties": false,
+  "properties": {
+    "treatment_id": { "$ref": "common.schema.json#/$defs/tax_treatment_id" },
+    "applies_to": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "transaction": { "$ref": "common.schema.json#/$defs/transaction_id" },
+        "taxpayer": { "$ref": "common.schema.json#/$defs/taxpayer_id" },
+        "ncm": { "$ref": "common.schema.json#/$defs/ncm" },
+        "nbs": { "$ref": "common.schema.json#/$defs/nbs" }
+      },
+      "minProperties": 1
+    },
+    "tax": { "$ref": "common.schema.json#/$defs/tax" },
+    "rule": { "$ref": "common.schema.json#/$defs/rule_id" },
+    "period": { "$ref": "common.schema.json#/$defs/period" },
+    "result": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "incidence": { "type": "string", "enum": ["TAXED", "EXEMPT", "IMMUNE", "SUSPENDED", "ZERO_RATE", "NOT_TAXED"] },
+        "rate": { "$ref": "common.schema.json#/$defs/percent" },
+        "base": { "$ref": "common.schema.json#/$defs/money" },
+        "amount": { "$ref": "common.schema.json#/$defs/money" },
+        "credit_eligible": { "type": "boolean" }
+      },
+      "required": ["incidence"]
+    },
+    "calculation": { "$ref": "common.schema.json#/$defs/calculation_id" },
+    "provenance": { "$ref": "common.schema.json#/$defs/provenance" }
+  },
+  "required": ["treatment_id", "applies_to", "tax", "rule", "period", "result", "provenance"]
+}

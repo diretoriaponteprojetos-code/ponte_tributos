@@ -1,0 +1,15 @@
+id: SRC-GITHUB-MCPFISCAL
+type: software
+authority_level: SOFTWARE
+authority: AUT-MCP-FISCAL-BRASIL
+publisher: DeHor-Labs
+title: mcp-fiscal-brasil
+url: https://github.com/DeHor-Labs/mcp-fiscal-brasil
+repository: DeHor-Labs/mcp-fiscal-brasil
+commit: df136768
+retrieved_at: 2026-09-15
+retrieval_status: RETRIEVED
+sha256: "0000000000000000000000000000000000000000000000000000000000000000"
+notes: >-
+  Placeholder de hash. O commit é o que torna a fonte reproduzível: o repositório
+  recebe commits frequentes (setembro de 2026: CNPJ, NF-e, auditoria de supply chain).

@@ -1,0 +1,38 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://ponte-projetos.dev/schemas/observation.schema.json",
+  "title": "Observation (L3)",
+  "description": "Métrica observada na empresa em um período, extraída de documentos do cliente.",
+  "type": "object",
+  "additionalProperties": false,
+  "properties": {
+    "observation_id": { "$ref": "common.schema.json#/$defs/observation_id" },
+    "taxpayer": { "$ref": "common.schema.json#/$defs/taxpayer_id" },
+    "metric": {
+      "type": "string",
+      "enum": [
+        "REVENUE", "TAX_PAID", "TAX_ASSESSED", "TAX_WITHHELD", "CREDITS_TAKEN",
+        "CREDITS_ELIGIBLE", "PAYROLL", "PURCHASES", "EFFECTIVE_TAX_BURDEN", "OTHER"
+      ]
+    },
+    "tax": { "$ref": "common.schema.json#/$defs/tax" },
+    "period": { "$ref": "common.schema.json#/$defs/period" },
+    "value": {
+      "oneOf": [
+        { "$ref": "common.schema.json#/$defs/money" },
+        { "$ref": "common.schema.json#/$defs/percent" }
+      ]
+    },
+    "dimensions": {
+      "type": "object",
+      "additionalProperties": { "type": ["string", "number"] }
+    },
+    "evidence": {
+      "type": "array",
+      "minItems": 1,
+      "items": { "$ref": "common.schema.json#/$defs/evidence_id" }
+    },
+    "provenance": { "$ref": "common.schema.json#/$defs/provenance" }
+  },
+  "required": ["observation_id", "taxpayer", "metric", "period", "value", "evidence", "provenance"]
+}

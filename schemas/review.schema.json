@@ -1,0 +1,36 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://ponte-projetos.dev/schemas/review.schema.json",
+  "title": "Review (governança)",
+  "description": "Revisão humana com resultado explícito. Rule só vira ACTIVE e Decision só vira REVIEWED com uma Review APPROVED.",
+  "type": "object",
+  "additionalProperties": false,
+  "properties": {
+    "review_id": { "$ref": "common.schema.json#/$defs/review_id" },
+    "object_id": { "type": "string", "pattern": "^[A-Z]+-[A-Z0-9-]+$" },
+    "reviewer": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "name": { "type": "string", "minLength": 1 },
+        "role": { "type": "string", "enum": ["CONTADOR", "ADVOGADO", "ESPECIALISTA_TRIBUTARIO", "ANALISTA_PONTE", "AUDITOR"] },
+        "registration": { "type": "string", "description": "CRC, OAB etc." }
+      },
+      "required": ["name", "role"]
+    },
+    "outcome": { "type": "string", "enum": ["APPROVED", "REJECTED", "NEEDS_CHANGES"] },
+    "reviewed_at": { "$ref": "common.schema.json#/$defs/datetime" },
+    "notes": { "type": "string" },
+    "checked_evidence": {
+      "type": "array",
+      "items": { "$ref": "common.schema.json#/$defs/evidence_id" }
+    }
+  },
+  "required": ["review_id", "object_id", "reviewer", "outcome", "reviewed_at"],
+  "allOf": [
+    {
+      "if": { "properties": { "outcome": { "enum": ["REJECTED", "NEEDS_CHANGES"] } } },
+      "then": { "required": ["notes"] }
+    }
+  ]
+}

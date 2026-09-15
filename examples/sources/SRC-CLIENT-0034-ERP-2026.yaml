@@ -1,0 +1,11 @@
+id: SRC-CLIENT-0034-ERP-2026
+type: client_document
+authority_level: CLIENT_RECORD
+authority: AUT-CLIENT-0034
+publisher: Empresa Exemplo 034 Ltda.
+title: Extração ERP — vendas por UF e por cliente, últimos 12 meses
+taxpayer: TP-0034
+retrieved_at: 2026-09-10
+retrieval_status: RETRIEVED
+sha256: "0000000000000000000000000000000000000000000000000000000000000000"
+notes: Fixture. Placeholder de hash.

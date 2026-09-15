@@ -1,0 +1,8 @@
+authority_id: AUT-MCIBR
+name: MCIBr (biblioteca de cálculo de impostos)
+kind: SOFTWARE_PROJECT
+authority_level: SOFTWARE
+can_assert:
+  - implementação computacional de cálculo tributário
+cannot_decide:
+  - qual é a norma correta
