@@ -4,10 +4,14 @@
 Uso:
     python tools/ingest_source.py SRC-RFB-LC214
     python tools/ingest_source.py SRC-RFB-LC214 --grep "Art. 346" --context 6
+    python tools/ingest_source.py SRC-RFB-LC214 --file lcp214.htm --grep "Art. 34[368]"
 
 O arquivo baixado fica em `sources_cache/<ID>.<ext>` (ignorado pelo git). O YAML
 da fonte em `examples/sources/<ID>.yaml` é atualizado in loco:
 `sha256`, `retrieved_at` (hoje) e `retrieval_status: RETRIEVED`.
+
+Se o site derrubar a conexão mesmo após as novas tentativas, salve a página pelo
+navegador (Ctrl+S, "somente HTML") e passe o caminho com `--file`.
 
 Com `--grep`, imprime as linhas do texto (HTML convertido em texto) que contêm
 o padrão, com contexto, para conferir locator e redação de uma Evidence antes
@@ -21,6 +25,8 @@ import hashlib
 import html
 import re
 import sys
+import time
+import urllib.error
 import urllib.request
 from datetime import date
 from html.parser import HTMLParser
@@ -66,12 +72,50 @@ def html_to_text(raw: bytes) -> str:
     return re.sub(r"[ \t\xa0]+", " ", out)
 
 
+def fetch(url: str, attempts: int = 4) -> tuple[bytes, str]:
+    """Baixa a URL identificando-se como navegador, com novas tentativas.
+
+    O Planalto e outros sites oficiais derrubam a conexão de clientes que não
+    parecem navegador (ConnectionResetError / WinError 10054).
+    """
+    headers = {
+        "User-Agent": (
+            "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 "
+            "(KHTML, like Gecko) Chrome/129.0.0.0 Safari/537.36"
+        ),
+        "Accept": "text/html,application/xhtml+xml,application/pdf;q=0.9,*/*;q=0.8",
+        "Accept-Language": "pt-BR,pt;q=0.9",
+        "Connection": "close",
+    }
+    last: Exception | None = None
+    for i in range(attempts):
+        try:
+            req = urllib.request.Request(url, headers=headers)
+            with urllib.request.urlopen(req, timeout=120) as resp:
+                return resp.read(), resp.headers.get("Content-Type", "")
+        except (OSError, urllib.error.URLError) as exc:  # inclui ConnectionResetError
+            last = exc
+            wait = 2 ** i
+            print(f"tentativa {i + 1}/{attempts} falhou ({exc}); nova tentativa em {wait}s", file=sys.stderr)
+            time.sleep(wait)
+    raise SystemExit(
+        f"não foi possível baixar {url} após {attempts} tentativas: {last}\n"
+        "Alternativa: abra a URL no navegador, salve a página (Ctrl+S, formato "
+        "'Página da Web, somente HTML') e rode de novo com --file CAMINHO_DO_ARQUIVO."
+    )
+
+
 def main(argv: list[str] | None = None) -> int:
     ap = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
     ap.add_argument("source_id")
     ap.add_argument("--grep", help="padrão (regex, sem distinção de maiúsculas) a procurar no texto")
     ap.add_argument("--context", type=int, default=4, help="linhas de contexto ao redor de cada ocorrência")
     ap.add_argument("--dry-run", action="store_true", help="não altera o YAML da fonte")
+    ap.add_argument(
+        "--file",
+        type=Path,
+        help="usar um arquivo já baixado (ex.: salvo pelo navegador) em vez de acessar a url da fonte",
+    )
     args = ap.parse_args(argv)
 
     path = ROOT / "examples" / "sources" / f"{args.source_id}.yaml"
@@ -80,20 +124,26 @@ def main(argv: list[str] | None = None) -> int:
         return 2
     doc = yaml.safe_load(path.read_text(encoding="utf-8"))
     url = doc.get("url")
-    if not url:
-        print("a fonte não tem `url`", file=sys.stderr)
+    if not url and not args.file:
+        print("a fonte não tem `url`; use --file", file=sys.stderr)
         return 2
 
-    req = urllib.request.Request(url, headers={"User-Agent": "ponte-tributos-ingest/0.1"})
-    with urllib.request.urlopen(req, timeout=120) as resp:
-        raw = resp.read()
-        ctype = resp.headers.get("Content-Type", "")
-    ext = "pdf" if "pdf" in ctype or url.lower().endswith(".pdf") else "html"
+    if args.file:
+        if not args.file.is_file():
+            print(f"arquivo não encontrado: {args.file}", file=sys.stderr)
+            return 2
+        raw = args.file.read_bytes()
+        ctype = "application/pdf" if args.file.suffix.lower() == ".pdf" else "text/html"
+        origin = f"{args.file} (arquivo local; url da fonte: {url})"
+    else:
+        raw, ctype = fetch(url)
+        origin = url
+    ext = "pdf" if "pdf" in ctype or (url or "").lower().endswith(".pdf") else "html"
     CACHE.mkdir(exist_ok=True)
     cached = CACHE / f"{args.source_id}.{ext}"
     cached.write_bytes(raw)
     digest = hashlib.sha256(raw).hexdigest()
-    print(f"baixado : {url}")
+    print(f"origem  : {origin}")
     print(f"salvo   : {cached.relative_to(ROOT)} ({len(raw)} bytes)")
     print(f"sha256  : {digest}")
 
@@ -101,6 +151,11 @@ def main(argv: list[str] | None = None) -> int:
         doc["sha256"] = digest
         doc["retrieved_at"] = date.today().isoformat()
         doc["retrieval_status"] = "RETRIEVED"
+        if args.file:
+            doc["notes"] = (doc.get("notes") or "").rstrip() + (
+                f"\nRecuperado em {date.today().isoformat()} a partir de arquivo salvo manualmente "
+                f"({args.file.name}); o hash é do arquivo salvo, não do stream HTTP."
+            )
         path.write_text(yaml.safe_dump(doc, allow_unicode=True, sort_keys=False, width=100), encoding="utf-8")
         print(f"YAML    : {path.relative_to(ROOT)} atualizado (sha256, retrieved_at, retrieval_status)")
 
