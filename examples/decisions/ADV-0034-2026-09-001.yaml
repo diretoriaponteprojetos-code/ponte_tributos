@@ -15,8 +15,8 @@ derives_from:
   - CLM-0034-SCENARIO-2027
   - CLM-0034-CBS-2026-01
   - CLM-0034-BENCHMARK-01
-premises_total: 7
-premises_verified: 6
+premises_total: 8
+premises_verified: 7
 premises_unverified: 1
 scenarios:
   - label: Cenário atual (Lucro Presumido) — carga total 2027
@@ -50,9 +50,9 @@ actions:
     risk: BAIXO
     claim: CLM-0034-CBS-2026-01
 missing_evidence:
-  - Texto normativo das alíquotas de 2027 ingerido como Source com hash
-  - Transcrição literal do art. 348 da LC 214/2025 (EV-000384) e da página institucional da RFB (EV-000382)
-  - Regra própria para a dispensa de recolhimento condicionada a obrigações acessórias em 2026
+  - Texto normativo das alíquotas de 2027 ingerido como Source com hash (LC 214/2025, arts. 344 e 347, já presentes no HTML recuperado)
+  - Transcrição literal da página institucional da RFB (EV-000382)
+  - Regra própria para a dispensa de recolhimento condicionada a obrigações acessórias em 2026 (art. 348, § 1º)
 normative_snapshot: CANON-2026-09-15
 source_set:
   - SRC-RFB-LC214
@@ -76,4 +76,5 @@ provenance:
   notes: >-
     Fixture. Permanece DRAFT: sem Review aprovada e com 1 premissa não
     verificada (alíquotas de 2027), não pode ser entregue ao empresário.
-    Contagem atualizada em 2026-10-29 após conferência de EV-000381.
+    Contagem atualizada em 2026-10-29 após conferência de EV-000381 e
+    EV-000384 (8 premissas, 7 verificadas).

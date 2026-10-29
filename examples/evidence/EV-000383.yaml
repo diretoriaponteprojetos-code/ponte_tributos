@@ -19,4 +19,5 @@ provenance:
     Em 2026-10-29 o texto foi conferido contra o HTML oficial do Planalto
     (sha256 4c579e31…): a redação reconstruída dizia "mediante a aplicação";
     o oficial é "mediante aplicação". O trecho exibido indica um parágrafo
-    após o caput, ainda não transcrito (ver EV-000384 para o procedimento).
+    após o caput, ainda não transcrito; o art. 344, parágrafo único, já
+    lido, trata da aplicação das alíquotas na transição (ver docs/arquitetura/02).
