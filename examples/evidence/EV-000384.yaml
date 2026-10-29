@@ -5,15 +5,14 @@ locator:
   article: "348"
   paragraph: "1"
 text: >-
-  Art. 348 (síntese a substituir pela transcrição literal): em relação aos fatos
-  geradores de 1º de janeiro a 31 de dezembro de 2026, o valor recolhido de IBS e
-  CBS será compensado com o valor devido, no mesmo período de apuração, das
-  contribuições do art. 195, I, "b", e IV, e da contribuição para o PIS do
-  art. 239 da Constituição; § 1º: fica dispensado do recolhimento o contribuinte
-  que cumprir as obrigações acessórias previstas na legislação; § 2º: o
-  contribuinte dispensado permanece obrigado ao pagamento integral dessas
-  contribuições.
-observed_at: 2026-09-15
+  Art. 348. Em relação aos fatos geradores ocorridos de 1º de janeiro a 31 de
+  dezembro de 2026: I - o montante recolhido do IBS e da CBS será compensado
+  com o valor devido, [...] [TRECHO SEGUINTE AINDA NÃO TRANSCRITO; síntese por
+  fontes secundárias: § 1º dispensa do recolhimento o contribuinte que cumprir
+  as obrigações acessórias previstas na legislação; § 2º o contribuinte
+  dispensado permanece obrigado ao pagamento integral das contribuições do
+  art. 195, I, "b", e IV, e do PIS do art. 239 da Constituição.]
+observed_at: 2026-10-29
 verification_status: PENDING
 client_specific: false
 provenance:
@@ -21,8 +20,10 @@ provenance:
   created_by: fundacao-repositorio
   method: MANUAL
   notes: >-
-    Síntese a partir de fontes secundárias convergentes (Jurídico Certo, ConJur,
-    Sindifisco, sumários de busca). Não é transcrição literal: substituir pelo
-    texto do Planalto ao ingerir a fonte. Base da exceção "dispensa de
-    recolhimento condicionada a obrigações acessórias" nas regras
-    TAX-CBS-2026-001 e TAX-IBS-2026-001, ainda a modelar como regra própria.
+    Em 2026-10-29 a conferência contra o HTML oficial confirmou o caput e o
+    início do inciso I (Seção III, "Disposições Comuns ao IBS e à CBS em
+    2026"), mas o trecho exibido cortou antes do § 1º. Para concluir, rodar
+    sem baixar de novo: `python tools/ingest_source.py SRC-RFB-LC214 --file
+    sources_cache/SRC-RFB-LC214.html --dry-run --grep "Art. 348" --context 60`
+    e substituir este texto pela transcrição literal do caput, incisos e
+    parágrafos antes de promover a VERIFIED_AGAINST_SOURCE.

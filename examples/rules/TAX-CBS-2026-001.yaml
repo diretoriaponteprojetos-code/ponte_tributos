@@ -30,7 +30,7 @@ validity:
   publication_date: 2025-01-16
   valid_from: 2026-01-01
   valid_until: 2026-12-31
-  retrieved_at: 2026-09-15
+  retrieved_at: 2026-10-29
 status: ACTIVE
 evidence:
   - EV-000381
@@ -42,6 +42,6 @@ provenance:
   method: MANUAL
   notes: >-
     Exemplo de referência. Locator corrigido em 2026-09-15 de art. 343 para
-    art. 346 (ver histórico em EV-000381). Como as evidências estão PENDING, em
-    operação real esta regra ficaria em DRAFT até a conferência; aqui está
-    ACTIVE apenas para demonstrar a exigência de Review.
+    art. 346 (ver histórico em EV-000381). Em 2026-10-29 a evidência principal
+    (EV-000381) foi conferida contra o texto oficial; EV-000382 (página
+    institucional da RFB) segue PENDING e é apenas corroboração.

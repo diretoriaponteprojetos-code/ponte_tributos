@@ -22,8 +22,10 @@ derived_from:
   - CALC-0034-CBS-2026-01
 premises:
   - id: P1
-    statement: Alíquota de teste da CBS em 2026 é 0,9% (EV-000381, pendente de conferência contra a fonte).
-    status: UNVERIFIED
+    statement: Alíquota de teste da CBS em 2026 é 0,9% (LC 214/2025, art. 346, caput).
+    status: VERIFIED
+    supported_by:
+      - EV-000381
   - id: P2
     statement: Valor da operação de R$ 120.000,00 conforme NFS-e 000123.
     status: VERIFIED
@@ -45,11 +47,14 @@ verification:
     contradictory_evidence: PASS
     reproducible: PASS
     free_of_hypothesis: PASS
-  checked_at: "2026-09-15T16:00:00-03:00"
+  checked_at: "2026-10-29T12:00:00-03:00"
   checked_by: ponte-confrontation-engine
   notes: >-
-    exceptions UNKNOWN: a dispensa de recolhimento condicionada a obrigações
-    acessórias ainda não está modelada como regra própria.
+    Reavaliado em 2026-10-29 após conferência de EV-000381 contra o texto
+    oficial: P1 passa a VERIFIED. Permanece PARTIALLY_SUPPORTED porque
+    exceptions está UNKNOWN: a dispensa de recolhimento do art. 348, § 1º
+    (EV-000384, ainda PENDING) não está modelada como regra própria, e
+    EV-000382 (corroboração) segue PENDING.
 provenance:
   created_at: "2026-09-15T16:00:00-03:00"
   created_by: ponte-confrontation-engine

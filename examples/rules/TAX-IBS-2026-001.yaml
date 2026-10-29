@@ -29,7 +29,7 @@ validity:
   publication_date: 2025-01-16
   valid_from: 2026-01-01
   valid_until: 2026-12-31
-  retrieved_at: 2026-09-15
+  retrieved_at: 2026-10-29
 status: ACTIVE
 evidence:
   - EV-000383
@@ -41,4 +41,5 @@ provenance:
   method: MANUAL
   notes: >-
     Exemplo de referência; ver nota em TAX-CBS-2026-001. Evidência trocada em
-    2026-09-15 para EV-000383 (art. 343, IBS), separada da evidência da CBS.
+    2026-09-15 para EV-000383 (art. 343, IBS), conferida contra o texto
+    oficial em 2026-10-29.

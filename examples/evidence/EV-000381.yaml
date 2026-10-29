@@ -3,25 +3,22 @@ source: SRC-RFB-LC214
 kind: TEXT
 locator:
   article: "346"
+  item: caput
 text: >-
-  Em relação aos fatos geradores ocorridos de 1º de janeiro a 31 de dezembro de
-  2026, a CBS será cobrada mediante aplicação da alíquota de 0,9% (nove décimos
-  por cento).
-observed_at: 2026-09-15
-verification_status: PENDING
+  Art. 346. Em relação aos fatos geradores ocorridos de 1º de janeiro a 31 de
+  dezembro de 2026, a CBS será cobrada mediante aplicação da alíquota de 0,9%
+  (nove décimos por cento).
+observed_at: 2026-10-29
+verification_status: VERIFIED_AGAINST_SOURCE
 client_specific: false
 provenance:
   created_at: "2026-09-15T12:00:00-03:00"
   created_by: fundacao-repositorio
   method: MANUAL
   notes: >-
-    Histórico: a primeira versão desta evidência atribuía CBS 0,9% e IBS 0,1% a
-    um único artigo (343), transcrito de memória. Em 2026-09-15 a conferência
-    por fontes secundárias convergentes (Sindifisco, ConJur, TaxUp, Pasqualino,
-    Jurídico Certo, sumários de busca) indicou que o art. 346 trata da CBS e o
-    art. 343 do IBS, confirmando o locator do documento fundador. O texto acima
-    é a redação reconstruída dessas fontes. Permanece PENDING porque o texto
-    oficial do Planalto não pôde ser recuperado deste ambiente (bloqueio de
-    rede). Conferir com `python tools/ingest_source.py SRC-RFB-LC214 --grep
-    "Art. 346"` em ambiente com acesso e só então promover a
-    VERIFIED_AGAINST_SOURCE.
+    Histórico: a primeira versão atribuía CBS 0,9% e IBS 0,1% a um único
+    artigo (343), transcrito de memória; em 2026-09-15 fontes secundárias
+    fixaram o locator no art. 346. Em 2026-10-29 o texto foi conferido contra
+    o HTML oficial do Planalto (sha256 4c579e31…) via
+    `tools/ingest_source.py SRC-RFB-LC214 --grep "Art. 34[368]"`: transcrição
+    literal do caput, sem parágrafos no trecho exibido.
