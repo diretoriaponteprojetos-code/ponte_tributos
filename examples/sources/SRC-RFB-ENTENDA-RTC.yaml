@@ -5,7 +5,12 @@ authority: AUT-RFB
 publisher: Receita Federal do Brasil
 title: Entenda a Reforma Tributária do Consumo
 url: https://www.gov.br/receitafederal/pt-br/acesso-a-informacao/acoes-e-programas/programas-e-atividades/reforma-tributaria-do-consumo/entenda
-retrieved_at: 2026-09-15
+retrieved_at: 2026-10-29
 retrieval_status: RETRIEVED
-sha256: "0000000000000000000000000000000000000000000000000000000000000000"
-notes: Placeholder de hash. Página institucional; não substitui o texto legal.
+sha256: "6c154ab98d765d63179953affd45e9e5404955146cbd1cec9ff267354a3842d6"
+notes: >-
+  Página institucional (publicada em 27/06/2025, atualizada em 16/10/2026
+  segundo o próprio cabeçalho); não substitui o texto legal. Recuperada em
+  2026-10-29 com `tools/ingest_source.py` (HTML de 224.434 bytes). A página
+  usa linguagem simplificada ("isenta a arrecadação da taxa de prova") onde a
+  LC 214/2025, art. 348, § 1º, fala em dispensa do recolhimento.

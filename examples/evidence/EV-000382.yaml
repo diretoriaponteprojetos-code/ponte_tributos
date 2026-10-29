@@ -2,15 +2,30 @@ evidence_id: EV-000382
 source: SRC-RFB-ENTENDA-RTC
 kind: TEXT
 locator:
-  section: Transição — 2026
+  section: Transição
 text: >-
-  Em 2026 a CBS será cobrada à alíquota de 0,9% e o IBS à alíquota de 0,1%,
-  em caráter de teste.
-observed_at: 2026-09-15
-verification_status: PENDING
+  2026
+  Ano teste da CBS e do IBS;
+  O montante arrecadado da CBS (0,9%) e do IBS (0,1%) será compensado com o
+  valor devido de PIS e COFINS, no mesmo período de liquidação;
+  Ficará isenta a arrecadação da taxa de prova da CBS e do IBS, em 2026, para
+  os contribuintes que cumprirem com as obrigações acessórias, conforme a
+  legislação.
+  2027 e 2028
+  Cobrança de CBS com a alíquota reduzida em 0.1 (um décimo) ponto percentual.
+  Cobrança de IBS com alíquota de 0.1 (um décimo) ponto percentual.
+observed_at: 2026-10-29
+verification_status: VERIFIED_AGAINST_SOURCE
 client_specific: false
 provenance:
   created_at: "2026-09-15T12:00:00-03:00"
   created_by: fundacao-repositorio
   method: MANUAL
-  notes: Paráfrase da página institucional; substituir pela citação literal ao conferir.
+  notes: >-
+    Transcrição literal do HTML institucional (sha256 6c154ab9…), conferida em
+    2026-10-29 via `tools/ingest_source.py SRC-RFB-ENTENDA-RTC --grep
+    "0,9|0,1|2026"`. Substitui a paráfrase anterior. Corrobora os arts. 343,
+    346 e 348 da LC 214/2025 (EV-000381, EV-000383, EV-000384) e os arts. 344
+    e 347 (EV-000385, EV-000386). Imprecisões da página: "isenta a
+    arrecadação" onde a lei diz "dispensado o recolhimento"; "IBS com alíquota
+    de 0.1 p.p." em 2027-2028 corresponde a 0,05% estadual + 0,05% municipal.

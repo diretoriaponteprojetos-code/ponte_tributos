@@ -14,10 +14,13 @@ supported_by:
   - EV-CLIENT-0034
   - EV-CLIENT-0035
   - EV-CLIENT-0036
-  - EV-000381
+  - EV-000385
+  - EV-000386
+  - EV-000387
 governed_by:
-  - TAX-CBS-2026-001
-  - TAX-IBS-2026-001
+  - TAX-CBS-2027-001
+  - TAX-IBS-2027-UF-001
+  - TAX-IBS-2027-MUN-001
 derived_from:
   - CALC-0034-SCENARIO-2027
 premises:
@@ -43,8 +46,19 @@ premises:
       - EV-CLIENT-0035
   - id: P5
     statement: >-
-      Alíquotas de 2027 assumidas iguais às de referência do snapshot
-      CANON-2026-09-15; a regra de 2027 ainda não foi modelada.
+      Mecanismo legal de 2027-2028: IBS a 0,05% estadual e 0,05% municipal
+      (LC 214/2025, art. 344) e CBS à alíquota-padrão do art. 14 reduzida em
+      0,1 ponto percentual (art. 347).
+    status: VERIFIED
+    supported_by:
+      - EV-000385
+      - EV-000386
+      - EV-000387
+  - id: P6
+    statement: >-
+      Valor da alíquota-padrão ou de referência da CBS para 2027 (lei da
+      União ou alíquota de referência do art. 18): ainda não fixado ou não
+      ingerido; o cálculo usa valor assumido.
     status: UNVERIFIED
 normative_snapshot: CANON-2026-09-15
 verification:
@@ -57,14 +71,20 @@ verification:
     entity: PASS
     product_or_cnae: PASS
     jurisdiction: PASS
-    period: UNKNOWN
+    period: PASS
     exceptions: UNKNOWN
     contradictory_evidence: PASS
     reproducible: PASS
     free_of_hypothesis: FAIL
-  checked_at: "2026-09-15T16:10:00-03:00"
+  checked_at: "2026-10-29T15:00:00-03:00"
   checked_by: ponte-confrontation-engine
-  notes: Depende de hipótese sobre as alíquotas de 2027 (P5).
+  notes: >-
+    Reavaliado em 2026-10-29: o mecanismo legal de 2027-2028 passou a
+    verificado (P5) após conferência dos arts. 14, 344 e 347 contra o texto
+    oficial; o que permanece hipótese é o valor da alíquota-padrão da CBS
+    (P6). in_force UNKNOWN porque as regras de 2027 estão DRAFT (sem Review).
+    exceptions UNKNOWN: regimes diferenciados e específicos ainda não
+    modelados.
 provenance:
   created_at: "2026-09-15T16:10:00-03:00"
   created_by: ponte-confrontation-engine

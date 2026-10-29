@@ -3,11 +3,18 @@ source: SRC-RFB-LC214
 kind: TEXT
 locator:
   article: "343"
-  item: caput
 text: >-
   Art. 343. Em relação aos fatos geradores ocorridos de 1º de janeiro a 31 de
   dezembro de 2026, o IBS será cobrado mediante aplicação da alíquota estadual
   de 0,1% (um décimo por cento).
+  Parágrafo único. Durante o período indicado no caput deste artigo a
+  arrecadação do IBS não observará as vinculações, repartições e destinações
+  previstas na Constituição Federal, devendo ser aplicada, integral e
+  sucessivamente, para:
+  I - o financiamento do Comitê Gestor do IBS, nos termos do art. 156-B, § 2º,
+  III, da Constituição Federal; e
+  II - compor o Fundo de Compensação de Benefícios Fiscais ou
+  Financeiro-Fiscais do ICMS.
 observed_at: 2026-10-29
 verification_status: VERIFIED_AGAINST_SOURCE
 client_specific: false
@@ -18,6 +25,5 @@ provenance:
   notes: >-
     Em 2026-10-29 o texto foi conferido contra o HTML oficial do Planalto
     (sha256 4c579e31…): a redação reconstruída dizia "mediante a aplicação";
-    o oficial é "mediante aplicação". O trecho exibido indica um parágrafo
-    após o caput, ainda não transcrito; o art. 344, parágrafo único, já
-    lido, trata da aplicação das alíquotas na transição (ver docs/arquitetura/02).
+    o oficial é "mediante aplicação". Parágrafo único transcrito na segunda
+    leitura (`--grep "Art. 14\.|Art. 344\."`).

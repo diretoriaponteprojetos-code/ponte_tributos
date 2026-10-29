@@ -76,6 +76,8 @@ tributo
 + situação da empresa
 ```
 
+Quando a norma define a alíquota por remissão, e não por número (por exemplo, "a alíquota-padrão reduzida em 0,1 ponto percentual"), a regra usa `effect.kind: RATE_FORMULA` com `reference` e `adjustment_points`. O número só entra quando o ato que fixa a referência for ingerido como `Source`.
+
 Schema: [`schemas/rule.schema.json`](../../schemas/rule.schema.json).
 
 ## L3 — Business Facts
