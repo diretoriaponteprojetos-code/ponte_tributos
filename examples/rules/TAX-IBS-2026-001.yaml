@@ -6,8 +6,13 @@ subject:
 scope:
   jurisdiction:
     level: ESTADUAL
+  regimes:
+    - LUCRO_PRESUMIDO
+    - LUCRO_REAL
+    - IMUNE_ISENTA
   taxpayer_conditions:
     - contribuinte sujeito ao IBS no período de teste
+    - não optante pelo Simples Nacional (LC 214/2025, art. 348, III, "c")
 condition:
   event_date:
     from: 2026-01-01
@@ -19,9 +24,19 @@ effect:
     unit: percent
 exceptions:
   - description: >-
-      Dispensa de recolhimento para o contribuinte que cumprir as obrigações
-      acessórias (LC 214/2025, art. 348, § 1º; ver EV-000384). A modelar como
-      regra própria.
+      Operações sujeitas a alíquota reduzida em regimes diferenciados: a
+      alíquota de teste é aplicada com a respectiva redução (art. 348, III, "a").
+  - description: >-
+      Regimes específicos: aplicação sobre as respectivas bases de cálculo,
+      exceto combustíveis e biocombustíveis dos arts. 172 a 180 (art. 348, III, "b").
+  - description: >-
+      Não se aplica às operações de contribuintes optantes pelo Simples
+      Nacional (art. 348, III, "c").
+  - description: >-
+      Dispensa do recolhimento para o sujeito passivo que cumprir as obrigações
+      acessórias previstas na legislação (art. 348, § 1º); se recolhido, o
+      montante é compensado com PIS/Cofins do mesmo período (art. 348, I e II).
+      A modelar como regra própria.
 authority:
   source: SRC-RFB-LC214
   article: "343"
@@ -29,10 +44,11 @@ validity:
   publication_date: 2025-01-16
   valid_from: 2026-01-01
   valid_until: 2026-12-31
-  retrieved_at: 2026-09-15
+  retrieved_at: 2026-10-29
 status: ACTIVE
 evidence:
   - EV-000383
+  - EV-000384
   - EV-000382
 review: REV-0002
 provenance:
@@ -41,4 +57,5 @@ provenance:
   method: MANUAL
   notes: >-
     Exemplo de referência; ver nota em TAX-CBS-2026-001. Evidência trocada em
-    2026-09-15 para EV-000383 (art. 343, IBS), separada da evidência da CBS.
+    2026-09-15 para EV-000383 (art. 343, IBS), conferida contra o texto
+    oficial em 2026-10-29 junto com EV-000384 (art. 348).

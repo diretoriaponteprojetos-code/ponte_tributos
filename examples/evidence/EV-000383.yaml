@@ -4,20 +4,26 @@ kind: TEXT
 locator:
   article: "343"
 text: >-
-  Em relação aos fatos geradores ocorridos de 1º de janeiro a 31 de dezembro de
-  2026, o IBS será cobrado mediante a aplicação da alíquota estadual de 0,1%
-  (um décimo por cento).
-observed_at: 2026-09-15
-verification_status: PENDING
+  Art. 343. Em relação aos fatos geradores ocorridos de 1º de janeiro a 31 de
+  dezembro de 2026, o IBS será cobrado mediante aplicação da alíquota estadual
+  de 0,1% (um décimo por cento).
+  Parágrafo único. Durante o período indicado no caput deste artigo a
+  arrecadação do IBS não observará as vinculações, repartições e destinações
+  previstas na Constituição Federal, devendo ser aplicada, integral e
+  sucessivamente, para:
+  I - o financiamento do Comitê Gestor do IBS, nos termos do art. 156-B, § 2º,
+  III, da Constituição Federal; e
+  II - compor o Fundo de Compensação de Benefícios Fiscais ou
+  Financeiro-Fiscais do ICMS.
+observed_at: 2026-10-29
+verification_status: VERIFIED_AGAINST_SOURCE
 client_specific: false
 provenance:
   created_at: "2026-09-15T19:00:00-03:00"
   created_by: fundacao-repositorio
   method: MANUAL
   notes: >-
-    Redação reconstruída a partir de fontes secundárias convergentes em
-    2026-09-15; o texto oficial não pôde ser recuperado deste ambiente
-    (bloqueio de rede). Conferir com `python tools/ingest_source.py
-    SRC-RFB-LC214 --grep "Art. 343"` antes de promover a
-    VERIFIED_AGAINST_SOURCE. As mesmas fontes indicam, para 2027-2028,
-    alíquota estadual de 0,05% e municipal de 0,05% (artigo a confirmar).
+    Em 2026-10-29 o texto foi conferido contra o HTML oficial do Planalto
+    (sha256 4c579e31…): a redação reconstruída dizia "mediante a aplicação";
+    o oficial é "mediante aplicação". Parágrafo único transcrito na segunda
+    leitura (`--grep "Art. 14\.|Art. 344\."`).

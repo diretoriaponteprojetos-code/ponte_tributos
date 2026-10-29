@@ -60,9 +60,11 @@ def test_supersedes_chain_must_not_overlap(repo_copy: Path) -> None:
 
 
 def test_decision_premise_counts_must_match_claims(repo_copy: Path) -> None:
+    # Zera a contagem declarada; os claims de origem têm premissas verificadas,
+    # então o validador deve apontar a divergência qualquer que seja o estado.
     _rewrite(
         repo_copy / "examples/decisions/ADV-0034-2026-09-001.yaml",
-        lambda d: d.__setitem__("premises_verified", 7),
+        lambda d: (d.__setitem__("premises_verified", 0), d.__setitem__("premises_unverified", 0)),
     )
     errors = validate_repo(repo_copy)
     assert any("contagem de premissas" in e for e in errors)
@@ -78,15 +80,14 @@ def test_decision_needs_review_to_be_delivered(repo_copy: Path) -> None:
 
 
 def test_verified_premise_needs_verified_evidence(repo_copy: Path) -> None:
+    # EV-CGSN-140-001 segue PENDING; apoiar uma premissa VERIFIED nela deve
+    # ser rejeitado, qualquer que seja o estado das demais evidências.
     _rewrite(
         repo_copy / "examples/claims/CLM-0034-CBS-2026-01.yaml",
-        lambda d: (
-            d["premises"][0].__setitem__("status", "VERIFIED"),
-            d["premises"][0].__setitem__("supported_by", ["EV-000381"]),
-        ),
+        lambda d: d["premises"][0].__setitem__("supported_by", ["EV-CGSN-140-001"]),
     )
     errors = validate_repo(repo_copy)
-    assert any("evidência não conferida EV-000381" in e for e in errors)
+    assert any("evidência não conferida EV-CGSN-140-001" in e for e in errors)
 
 
 def test_research_finding_is_never_client_specific(repo_copy: Path) -> None:

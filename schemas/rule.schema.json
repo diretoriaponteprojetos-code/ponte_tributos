@@ -60,9 +60,20 @@
       "properties": {
         "kind": {
           "type": "string",
-          "enum": ["RATE", "EXEMPTION", "CREDIT", "REDUCTION", "OBLIGATION", "DEADLINE", "BASE_DEFINITION"]
+          "enum": ["RATE", "RATE_FORMULA", "EXEMPTION", "CREDIT", "REDUCTION", "OBLIGATION", "DEADLINE", "BASE_DEFINITION"]
         },
         "rate": { "$ref": "common.schema.json#/$defs/percent" },
+        "formula": {
+          "type": "object",
+          "additionalProperties": false,
+          "description": "Alíquota definida por remissão a outro parâmetro (ex.: alíquota-padrão reduzida em N pontos percentuais)",
+          "properties": {
+            "reference": { "type": "string", "minLength": 1, "description": "Parâmetro de referência, em linguagem controlada" },
+            "adjustment_points": { "type": "number", "description": "Ajuste em pontos percentuais sobre a referência" },
+            "description": { "type": "string" }
+          },
+          "required": ["reference", "adjustment_points"]
+        },
         "reduction": { "$ref": "common.schema.json#/$defs/percent" },
         "description": { "type": "string" }
       },
@@ -71,6 +82,10 @@
         {
           "if": { "properties": { "kind": { "const": "RATE" } } },
           "then": { "required": ["rate"] }
+        },
+        {
+          "if": { "properties": { "kind": { "const": "RATE_FORMULA" } } },
+          "then": { "required": ["formula"] }
         },
         {
           "if": { "properties": { "kind": { "const": "REDUCTION" } } },

@@ -3,26 +3,55 @@ source: SRC-RFB-LC214
 kind: TEXT
 locator:
   article: "348"
-  paragraph: "1"
+  section: Seção III — Disposições Comuns ao IBS e à CBS em 2026
 text: >-
-  Art. 348 (síntese a substituir pela transcrição literal): em relação aos fatos
-  geradores de 1º de janeiro a 31 de dezembro de 2026, o valor recolhido de IBS e
-  CBS será compensado com o valor devido, no mesmo período de apuração, das
-  contribuições do art. 195, I, "b", e IV, e da contribuição para o PIS do
-  art. 239 da Constituição; § 1º: fica dispensado do recolhimento o contribuinte
-  que cumprir as obrigações acessórias previstas na legislação; § 2º: o
-  contribuinte dispensado permanece obrigado ao pagamento integral dessas
-  contribuições.
-observed_at: 2026-09-15
-verification_status: PENDING
+  Art. 348. Em relação aos fatos geradores ocorridos de 1º de janeiro a 31 de
+  dezembro de 2026:
+  I - o montante recolhido do IBS e da CBS será compensado com o valor devido,
+  no mesmo período de apuração, das contribuições previstas no art. 195,
+  inciso I, alínea "b", e inciso IV, e da contribuição para o PIS a que se
+  refere o art. 239, ambos da Constituição Federal;
+  II - caso o contribuinte não possua débitos suficientes para efetuar a
+  compensação de que trata o inciso I, o valor recolhido poderá ser:
+  a) compensado com qualquer outro tributo federal, nos termos da legislação; ou
+  b) ressarcido em até 60 (sessenta) dias, mediante requerimento;
+  III - as alíquotas do IBS e da CBS previstas nos arts. 343 e 346 desta Lei
+  Complementar:
+  a) serão aplicadas com a respectiva redução no caso das operações sujeitas a
+  alíquota reduzida, no âmbito de regimes diferenciados de tributação;
+  b) serão aplicadas em relação aos regimes específicos de que trata esta Lei
+  Complementar, observadas as respectivas bases de cálculo, exceto em relação
+  aos combustíveis e biocombustíveis de que tratam os arts. 172 a 180;
+  c) não serão aplicadas em relação às operações dos contribuintes optantes
+  pelo Simples Nacional.
+  § 1º Fica dispensado o recolhimento do IBS e da CBS relativo aos fatos
+  geradores ocorridos no período indicado no caput em relação aos sujeitos
+  passivos que cumprirem as obrigações acessórias previstas na legislação.
+  § 2º O sujeito passivo dispensado do recolhimento na forma do § 1º permanece
+  obrigado ao pagamento integral das Contribuições previstas no art. 195,
+  inciso I, alínea "b", e inciso IV, e da contribuição para o Programa de
+  Integração Social a que se refere o art. 239, ambos da Constituição Federal.
+  § 3º Durante o período a que se refere o caput deste artigo, caso seja
+  lavrado auto de infração por descumprimento das obrigações acessórias
+  relativas ao IBS e à CBS previstas no art. 341-G desta Lei Complementar, o
+  sujeito passivo será intimado para, no prazo de 60 (sessenta) dias contado da
+  intimação, suprir a omissão apontada pela fiscalização. (Incluído pela Lei
+  Complementar nº 227, de 2026)
+  § 4º O atendimento à intimação a que se refere o § 3º deste artigo importa
+  extinção da penalidade imposta ao sujeito passivo. (Incluído pela Lei
+  Complementar nº 227, de 2026)
+observed_at: 2026-10-29
+verification_status: VERIFIED_AGAINST_SOURCE
 client_specific: false
 provenance:
   created_at: "2026-09-15T19:00:00-03:00"
   created_by: fundacao-repositorio
   method: MANUAL
   notes: >-
-    Síntese a partir de fontes secundárias convergentes (Jurídico Certo, ConJur,
-    Sindifisco, sumários de busca). Não é transcrição literal: substituir pelo
-    texto do Planalto ao ingerir a fonte. Base da exceção "dispensa de
-    recolhimento condicionada a obrigações acessórias" nas regras
-    TAX-CBS-2026-001 e TAX-IBS-2026-001, ainda a modelar como regra própria.
+    Transcrição literal do HTML oficial do Planalto (sha256 4c579e31…),
+    conferida em 2026-10-29 via `tools/ingest_source.py --file --dry-run
+    --grep "Art. 348" --context 60`. Quebras de linha do HTML foram
+    normalizadas; aspas tipográficas da alínea "b" foram trocadas por aspas
+    retas. O texto compilado já inclui as inserções da LC 227/2026 (§§ 3º e
+    4º). A síntese anterior por fontes secundárias omitia o inciso III,
+    alínea "c" (não aplicação a optantes do Simples Nacional).

@@ -10,13 +10,21 @@ period:
   to: 2027-12-31
 normative_snapshot: CANON-2026-09-15
 governed_by:
-  - TAX-CBS-2026-001
-  - TAX-IBS-2026-001
+  - TAX-CBS-2027-001
+  - TAX-IBS-2027-UF-001
+  - TAX-IBS-2027-MUN-001
 inputs:
   - TP-0034
   - EV-CLIENT-0036
 parameters:
-  hypothesis_2027_rates: alíquotas de 2027 assumidas iguais às de referência do snapshot; regra de 2027 ainda não modelada
+  ibs_uf_rate_percent: 0.05
+  ibs_mun_rate_percent: 0.05
+  cbs_reference_rate_percent: null
+  cbs_adjustment_points: -0.1
+  hypothesis_2027_cbs: >-
+    A alíquota-padrão/de referência da CBS para 2027 (LC 214/2025, arts. 14 e
+    18) ainda não foi fixada nem ingerida; o cenário usa valor assumido para
+    cbs_reference_rate_percent e por isso é SCENARIO_ONLY.
 outputs:
   scenario_current_total_tax:
     amount: 1951558

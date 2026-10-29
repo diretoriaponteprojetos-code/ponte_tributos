@@ -6,8 +6,13 @@ subject:
 scope:
   jurisdiction:
     level: FEDERAL
+  regimes:
+    - LUCRO_PRESUMIDO
+    - LUCRO_REAL
+    - IMUNE_ISENTA
   taxpayer_conditions:
     - contribuinte sujeito à CBS no período de teste
+    - não optante pelo Simples Nacional (LC 214/2025, art. 348, III, "c")
 condition:
   event_date:
     from: 2026-01-01
@@ -19,9 +24,18 @@ effect:
     unit: percent
 exceptions:
   - description: >-
-      Dispensa de recolhimento para o contribuinte que cumprir as obrigações
-      acessórias (LC 214/2025, art. 348, § 1º; ver EV-000384), com
-      compensação do valor recolhido contra PIS/Cofins (art. 348, caput).
+      Operações sujeitas a alíquota reduzida em regimes diferenciados: a
+      alíquota de teste é aplicada com a respectiva redução (art. 348, III, "a").
+  - description: >-
+      Regimes específicos: aplicação sobre as respectivas bases de cálculo,
+      exceto combustíveis e biocombustíveis dos arts. 172 a 180 (art. 348, III, "b").
+  - description: >-
+      Não se aplica às operações de contribuintes optantes pelo Simples
+      Nacional (art. 348, III, "c").
+  - description: >-
+      Dispensa do recolhimento para o sujeito passivo que cumprir as obrigações
+      acessórias previstas na legislação (art. 348, § 1º); se recolhido, o
+      montante é compensado com PIS/Cofins do mesmo período (art. 348, I e II).
       A modelar como regra própria.
 authority:
   source: SRC-RFB-LC214
@@ -30,10 +44,11 @@ validity:
   publication_date: 2025-01-16
   valid_from: 2026-01-01
   valid_until: 2026-12-31
-  retrieved_at: 2026-09-15
+  retrieved_at: 2026-10-29
 status: ACTIVE
 evidence:
   - EV-000381
+  - EV-000384
   - EV-000382
 review: REV-0001
 provenance:
@@ -42,6 +57,6 @@ provenance:
   method: MANUAL
   notes: >-
     Exemplo de referência. Locator corrigido em 2026-09-15 de art. 343 para
-    art. 346 (ver histórico em EV-000381). Como as evidências estão PENDING, em
-    operação real esta regra ficaria em DRAFT até a conferência; aqui está
-    ACTIVE apenas para demonstrar a exigência de Review.
+    art. 346 (ver histórico em EV-000381). Em 2026-10-29 EV-000381, EV-000384
+    e EV-000382 (corroboração institucional) foram conferidas contra as
+    fontes e as exceções passaram a refletir o art. 348 literal.

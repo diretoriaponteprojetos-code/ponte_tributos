@@ -5,11 +5,12 @@ authority: AUT-PLANALTO
 publisher: Presidência da República
 title: Lei Complementar nº 214, de 16 de janeiro de 2025
 url: https://www.planalto.gov.br/ccivil_03/leis/lcp/lcp214.htm
-retrieved_at: 2026-09-15
-retrieval_status: PENDING
+retrieved_at: 2026-10-29
+retrieval_status: RETRIEVED
+sha256: "4c579e310ade1e64d4b1dc5cf3adc21fcc529e28408dab49e01ab2c1e3fcd0ee"
 notes: >-
-  Institui IBS, CBS e Imposto Seletivo. Tentativa de recuperação em 2026-09-15
-  falhou: o proxy de saída deste ambiente bloqueia planalto.gov.br, gov.br,
-  camara.leg.br, senado.leg.br, normas.leg.br, lexml.gov.br e in.gov.br. Recuperar
-  em ambiente com acesso com `python tools/ingest_source.py SRC-RFB-LC214`, que
-  baixa o arquivo, grava o sha256 e muda retrieval_status para RETRIEVED.
+  Institui IBS, CBS e Imposto Seletivo. Recuperada em 2026-10-29 com
+  `tools/ingest_source.py` a partir de estação Windows (o ambiente de fundação,
+  em 2026-09-15, bloqueava os domínios oficiais). HTML de 5.403.667 bytes; o
+  hash é do stream HTTP. Texto compilado do Planalto: verificar se inclui
+  alterações posteriores (LC 227/2026) ao usar artigos fora da transição.

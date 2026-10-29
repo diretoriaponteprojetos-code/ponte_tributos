@@ -1,0 +1,58 @@
+rule_id: TAX-CBS-2027-001
+title: CBS — alíquota de 2027 a 2028 (alíquota-padrão reduzida em 0,1 ponto percentual)
+subject:
+  tax: CBS
+  incidence_hypothesis: fatos geradores ocorridos de 1º de janeiro de 2027 a 31 de dezembro de 2028
+scope:
+  jurisdiction:
+    level: FEDERAL
+  taxpayer_conditions:
+    - contribuinte sujeito à CBS
+condition:
+  event_date:
+    from: 2027-01-01
+    to: 2028-12-31
+effect:
+  kind: RATE_FORMULA
+  formula:
+    reference: >-
+      alíquota da CBS fixada nos termos do art. 14, I, e §§ 2º e 3º: lei
+      específica da União ou, na ausência de lei, alíquota de referência da
+      esfera federal (art. 18)
+    adjustment_points: -0.1
+    description: >-
+      A lei não traz número para 2027-2028. O valor depende de ato ainda não
+      ingerido (lei da União ou fixação da alíquota de referência).
+exceptions:
+  - description: >-
+      Combustíveis sujeitos ao regime específico dos arts. 172 a 180 ficam fora
+      da redução (art. 347, caput).
+  - description: >-
+      Operações com alíquota reduzida em regimes diferenciados: redução
+      proporcional (art. 347, § 1º, I).
+  - description: >-
+      Regimes específicos: redução aplicada sobre as respectivas bases de
+      cálculo (art. 347, § 1º, II).
+  - description: >-
+      Contribuintes do regime específico de combustíveis podem deduzir da CBS
+      o IBS recolhido nos termos do art. 344, parágrafo único, III (art. 347, § 2º).
+authority:
+  source: SRC-RFB-LC214
+  article: "347"
+validity:
+  publication_date: 2025-01-16
+  valid_from: 2027-01-01
+  valid_until: 2028-12-31
+  retrieved_at: 2026-10-29
+status: DRAFT
+evidence:
+  - EV-000386
+  - EV-000387
+provenance:
+  created_at: "2026-10-29T14:30:00-03:00"
+  created_by: fundacao-repositorio
+  method: MANUAL
+  notes: >-
+    Modelada a partir do texto oficial conferido (EV-000386, EV-000387). DRAFT
+    até Review humana e até a ingestão do ato que fixa a alíquota-padrão ou de
+    referência da CBS para 2027. O art. 18 ainda não foi transcrito.
